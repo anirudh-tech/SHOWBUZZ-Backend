@@ -6,6 +6,7 @@ export const signup = async (
 ) : Promise<UserEntity | null > => {
     try {
         const newUser = await User.create(data)
+        console.log(newUser,'new user,repo,signup')
         
         if (!newUser) {
             throw new Error("User creation failed!");

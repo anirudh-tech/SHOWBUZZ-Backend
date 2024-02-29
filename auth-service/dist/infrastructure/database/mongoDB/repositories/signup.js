@@ -14,6 +14,7 @@ const user_1 = require("../models/user");
 const signup = (data) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const newUser = yield user_1.User.create(data);
+        console.log(newUser, 'new user,repo,signup');
         if (!newUser) {
             throw new Error("User creation failed!");
         }

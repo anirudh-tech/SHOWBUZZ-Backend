@@ -10,11 +10,11 @@ const authRoutes_1 = require("../infrastructure/routes/authRoutes");
 const dependencies_1 = require("../config/dependencies");
 dotenv_1.default.config();
 const app = (0, express_1.default)();
-const PORT = Number(process.env.PORT) || 3000;
+const PORT = Number(process.env.PORT) || 3001;
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
 app.use((0, cookie_parser_1.default)());
-app.use("/auth", (0, authRoutes_1.authRoutes)(dependencies_1.dependencies));
+app.use("/", (0, authRoutes_1.authRoutes)(dependencies_1.dependencies));
 app.use((err, req, res, next) => {
     console.error(err);
     const errorResponse = {
@@ -23,6 +23,6 @@ app.use((err, req, res, next) => {
     return res.status(500).json(errorResponse);
 });
 app.listen(PORT, () => {
-    console.log(`connected to admin service at ${PORT}`);
+    console.log(`connected to auth service at ${PORT}`);
 });
 exports.default = app;

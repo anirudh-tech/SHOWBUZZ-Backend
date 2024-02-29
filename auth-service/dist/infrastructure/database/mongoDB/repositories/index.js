@@ -15,3 +15,6 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./signup"), exports);
+__exportStar(require("./checkEmail"), exports);
+__exportStar(require("./verifyOtp"), exports);
+__exportStar(require("./login"), exports);

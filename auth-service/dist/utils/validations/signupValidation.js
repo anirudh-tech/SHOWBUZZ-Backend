@@ -8,8 +8,7 @@ const joi_1 = __importDefault(require("joi"));
 exports.signupValidation = joi_1.default.object({
     username: joi_1.default
         .string()
-        .min(4)
-        .required(),
+        .min(4),
     email: joi_1.default
         .string()
         .email()
