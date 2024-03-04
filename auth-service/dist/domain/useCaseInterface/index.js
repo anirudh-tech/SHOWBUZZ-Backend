@@ -18,3 +18,4 @@ __exportStar(require("./ISignupUserUseCase"), exports);
 __exportStar(require("./ICheckUserEmailUseCase"), exports);
 __exportStar(require("./IVerifyOtpUseCase"), exports);
 __exportStar(require("./ILoginUserUseCase"), exports);
+__exportStar(require("./IIsExistUseCase"), exports);

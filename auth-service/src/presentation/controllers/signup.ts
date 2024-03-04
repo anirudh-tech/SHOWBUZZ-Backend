@@ -96,13 +96,13 @@ export const signupController = (dependencies: IDependencies) => {
                 { expiresIn: "1h" }
               );
 
-              res.cookie("access_token", accessToken, {
+              res.cookie("user_jwt", accessToken, {
                 httpOnly: true,
               });
 
-              res.status(200).json({
+              res.status(201).json({
                 success: true,
-                data: result,
+                user: result,
                 message: "User created!",
               });
             }

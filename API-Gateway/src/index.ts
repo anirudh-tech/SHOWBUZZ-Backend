@@ -6,7 +6,12 @@ import proxy from 'express-http-proxy'
 
 const app: Application = express()
 const PORT: number = Number(process.env.PORT || 8000);
-app.use(cors())
+const corsOptions = {
+    origin:'http://localhost:5173',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+}
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
 

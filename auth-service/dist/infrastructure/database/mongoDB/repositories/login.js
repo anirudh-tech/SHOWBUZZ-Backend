@@ -17,20 +17,26 @@ const user_1 = require("../models/user");
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const login = (data) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        console.log(data);
         const user = yield user_1.User.findOne({ email: data.email });
         console.log(user, 'new user,repo,signup');
         // check if password is same or not
         if (user) {
-            const isMatch = yield bcrypt_1.default.compare(data.password, user.password);
-            if (!isMatch) {
-                throw new Error("User creation failed!");
+            if (data.google) {
+                return user;
             }
             else {
-                return user;
+                const isMatch = yield bcrypt_1.default.compare(data.password, user.password);
+                if (!isMatch) {
+                    throw new Error("Username or password incorrect");
+                }
+                else {
+                    return user;
+                }
             }
         }
         else {
-            throw new Error("User creation failed!");
+            throw new Error("User not found!");
         }
     }
     catch (error) {

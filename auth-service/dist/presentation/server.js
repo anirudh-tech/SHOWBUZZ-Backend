@@ -18,7 +18,7 @@ app.use("/", (0, authRoutes_1.authRoutes)(dependencies_1.dependencies));
 app.use((err, req, res, next) => {
     console.error(err);
     const errorResponse = {
-        errors: [{ message: 'Something went wrong', err }],
+        errors: [{ message: (err === null || err === void 0 ? void 0 : err.message) || 'Something went wrong' }],
     };
     return res.status(500).json(errorResponse);
 });

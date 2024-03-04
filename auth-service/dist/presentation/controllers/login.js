@@ -27,12 +27,13 @@ const loginController = (dependencies) => {
                     role: user === null || user === void 0 ? void 0 : user.role,
                 };
                 const accessToken = jsonwebtoken_1.default.sign(payload, String(process.env.ACCESS_TOKEN_SECRET), { expiresIn: "1h" });
-                res.cookie("access_token", accessToken, {
+                console.log(accessToken, 'token');
+                res.cookie("user_jwt", accessToken, {
                     httpOnly: true,
                 });
                 res.status(200).json({
                     success: true,
-                    data: user,
+                    user: user,
                     message: "User verified!",
                 });
             }

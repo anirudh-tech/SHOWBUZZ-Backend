@@ -18,3 +18,4 @@ __exportStar(require("./signup"), exports);
 __exportStar(require("./checkEmail"), exports);
 __exportStar(require("./verifyOtp"), exports);
 __exportStar(require("./login"), exports);
+__exportStar(require("./isExist"), exports);

@@ -22,14 +22,14 @@ app.use((
   ) => {
     console.error(err);
       const errorResponse = {
-      errors: [{ message: 'Something went wrong',err }],
+      errors: [{ message: err?.message || 'Something went wrong' }],
     };
   
     return res.status(500).json(errorResponse);
   })
 
   app.listen(PORT, () => {
-    console.log(`connected to auth service at ${PORT}`)
-})
+    console.log(`connected to auth service at ${PORT}`) 
+}) 
 
-export default app;
+export default app; 

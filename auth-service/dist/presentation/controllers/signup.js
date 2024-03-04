@@ -89,12 +89,12 @@ const signupController = (dependencies) => {
                                 role: result === null || result === void 0 ? void 0 : result.role,
                             };
                             const accessToken = jsonwebtoken_1.default.sign(payload, String(process.env.ACCESS_TOKEN_SECRET), { expiresIn: "1h" });
-                            res.cookie("access_token", accessToken, {
+                            res.cookie("user_jwt", accessToken, {
                                 httpOnly: true,
                             });
-                            res.status(200).json({
+                            res.status(201).json({
                                 success: true,
-                                data: result,
+                                user: result,
                                 message: "User created!",
                             });
                         }

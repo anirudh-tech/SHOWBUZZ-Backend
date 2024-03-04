@@ -3,6 +3,7 @@ import { IDependencies } from "../../application/interfaces/IDependencies"
 import { UserEntity } from "../../domain/entities"
 import jwt from "jsonwebtoken";
 
+
 export const loginController = (dependencies: IDependencies) => {
     const {useCases : {loginUserUseCase}} = dependencies
 
@@ -21,19 +22,20 @@ export const loginController = (dependencies: IDependencies) => {
                     String(process.env.ACCESS_TOKEN_SECRET),
                     { expiresIn: "1h" }
                   );
+                  console.log(accessToken,'token')
     
-                  res.cookie("access_token", accessToken, {
+                  res.cookie("user_jwt", accessToken, {
                     httpOnly: true,
                   });
 
                 res.status(200).json({
                 success: true,
-                data: user,
+                user: user,
                 message: "User verified!",
                 })
             }
         } catch (error: any) {
-            next(error)
+            next(error);
         }
-    }
-}
+    };
+};

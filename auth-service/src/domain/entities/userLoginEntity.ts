@@ -5,4 +5,5 @@ export interface UserLoginEntity {
     _id?: ObjectId,
     email: string;
     password:string;
+    google:boolean;
 }
