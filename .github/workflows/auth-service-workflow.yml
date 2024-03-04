@@ -25,4 +25,4 @@ jobs:
               with:
                 context:  ./user/
                 push: true
-                tags: anirudhjagath/SHOWBUZZ-auth-service:latest
+                tags: anirudhjagath/showbuzz-auth-service:latest

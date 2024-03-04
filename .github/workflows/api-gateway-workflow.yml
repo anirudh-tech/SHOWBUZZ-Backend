@@ -26,4 +26,4 @@ jobs:
         with:
           context:  ./user/
           push: true
-          tags: anirudhjagath/SHOWBUZZ-api-gateway:latest
+          tags: anirudhjagath/showbuzz-api-gateway:latest
