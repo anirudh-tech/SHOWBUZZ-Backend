@@ -13,12 +13,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.login = void 0;
-const user_1 = require("../models/user");
+const loginCredentials_1 = require("../models/loginCredentials");
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const login = (data) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         console.log(data);
-        const user = yield user_1.User.findOne({ email: data.email });
+        const user = yield loginCredentials_1.User.findOne({ email: data.email });
         console.log(user, 'new user,repo,signup');
         // check if password is same or not
         if (user) {

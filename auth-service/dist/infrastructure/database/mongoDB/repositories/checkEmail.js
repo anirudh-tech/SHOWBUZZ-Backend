@@ -10,10 +10,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.checkEmail = void 0;
-const user_1 = require("../models/user");
+const loginCredentials_1 = require("../models/loginCredentials");
 const checkEmail = (email) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const userExist = yield user_1.User.findOne({ email });
+        const userExist = yield loginCredentials_1.User.findOne({ email });
         return userExist ? true : false;
     }
     catch (error) {

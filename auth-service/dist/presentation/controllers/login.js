@@ -31,6 +31,7 @@ const loginController = (dependencies) => {
                 res.cookie("user_jwt", accessToken, {
                     httpOnly: true,
                 });
+                // userCreatedProducer()
                 res.status(200).json({
                     success: true,
                     user: user,

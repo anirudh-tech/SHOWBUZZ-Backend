@@ -2,10 +2,11 @@ import { NextFunction, Request, Response } from "express"
 import { IDependencies } from "../../application/interfaces/IDependencies"
 import { UserEntity } from "../../domain/entities"
 import jwt from "jsonwebtoken";
+import { userCreatedProducer } from "../../infrastructure/kafka/producers/userCreatedProducer";
 
 
 export const loginController = (dependencies: IDependencies) => {
-    const {useCases : {loginUserUseCase}} = dependencies
+    const {useCases : {loginUserUseCase}} = dependencies;
 
     return async (req: Request, res: Response, next: NextFunction) => {
         try {
@@ -27,7 +28,8 @@ export const loginController = (dependencies: IDependencies) => {
                   res.cookie("user_jwt", accessToken, {
                     httpOnly: true,
                   });
-
+                  
+                  // userCreatedProducer()
                 res.status(200).json({
                 success: true,
                 user: user,

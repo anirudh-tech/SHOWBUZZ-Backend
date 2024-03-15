@@ -1,6 +1,6 @@
 import { UserEntity } from "../../../../domain/entities"
 import { verifyToken } from "../../../../utils/jwt/verifyToken"
-import { User } from "../models/user"
+import { User } from "../models/loginCredentials"
 
 export const isExist = async (token: string): Promise <UserEntity | null> => {
     try {

@@ -27,4 +27,4 @@ const userSchema = new mongoose_1.Schema({
 }, {
     timestamps: true
 });
-exports.User = (0, mongoose_1.model)("users", userSchema);
+exports.User = (0, mongoose_1.model)("logincredentials", userSchema);

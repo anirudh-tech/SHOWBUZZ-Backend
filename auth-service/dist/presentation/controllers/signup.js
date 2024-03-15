@@ -20,6 +20,7 @@ const generateOtp_1 = require("../../utils/otp/generateOtp");
 const otp_1 = require("../../infrastructure/database/mongoDB/models/otp");
 const sendOtp_1 = require("../../utils/otp/sendOtp");
 const generatePassword_1 = require("../../utils/password/generatePassword");
+const userCreatedProducer_1 = require("../../infrastructure/kafka/producers/userCreatedProducer");
 const signupController = (dependencies) => {
     const { useCases: { signupUserUseCase, checkUserEmailUseCase, verifyOtpUseCase }, } = dependencies;
     return (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
@@ -92,12 +93,19 @@ const signupController = (dependencies) => {
                             res.cookie("user_jwt", accessToken, {
                                 httpOnly: true,
                             });
+                            console.log(result, '================');
                             res.status(201).json({
                                 success: true,
                                 user: result,
                                 message: "User created!",
                             });
                         }
+                        const addedUser = {
+                            username: result.username,
+                            email: result.email,
+                            password: result.password
+                        };
+                        (0, userCreatedProducer_1.userCreatedProducer)(addedUser);
                     }
                 }
                 catch (error) {

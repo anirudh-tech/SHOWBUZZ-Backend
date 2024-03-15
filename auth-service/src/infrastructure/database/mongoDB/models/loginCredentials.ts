@@ -27,4 +27,4 @@ const userSchema = new Schema ({
     timestamps: true
 })
 
-export const User = model<UserEntity>("users",userSchema)
+export const User = model<UserEntity>("logincredentials",userSchema)

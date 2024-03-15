@@ -10,10 +10,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.signup = void 0;
-const user_1 = require("../models/user");
+const loginCredentials_1 = require("../models/loginCredentials");
 const signup = (data) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const newUser = yield user_1.User.create(data);
+        const newUser = yield loginCredentials_1.User.create(data);
         console.log(newUser, 'new user,repo,signup');
         if (!newUser) {
             throw new Error("User creation failed!");

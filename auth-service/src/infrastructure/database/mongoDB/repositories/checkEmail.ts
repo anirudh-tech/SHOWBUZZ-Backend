@@ -1,4 +1,4 @@
-import { User } from "../models/user"
+import { User } from "../models/loginCredentials"
 
 export const checkEmail = async (email: string)  => {
     try {

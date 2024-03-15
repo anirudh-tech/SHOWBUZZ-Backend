@@ -1,4 +1,4 @@
-import { User } from "../models/user";
+import { User } from "../models/loginCredentials";
 import { UserEntity } from "../../../../domain/entities";
 
 export const signup = async (

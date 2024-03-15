@@ -7,6 +7,7 @@ import { generateOtp } from "../../utils/otp/generateOtp";
 import { Otp } from "../../infrastructure/database/mongoDB/models/otp";
 import { sendOtp } from "../../utils/otp/sendOtp";
 import { generatePassword } from "../../utils/password/generatePassword";
+import { userCreatedProducer } from "../../infrastructure/kafka/producers/userCreatedProducer";
 
 export const signupController = (dependencies: IDependencies) => {
   const {
@@ -99,13 +100,20 @@ export const signupController = (dependencies: IDependencies) => {
               res.cookie("user_jwt", accessToken, {
                 httpOnly: true,
               });
-
+              console.log(result,'================');
+              
               res.status(201).json({
                 success: true,
                 user: result,
                 message: "User created!",
               });
             }
+            const addedUser = {
+              username:result.username,
+              email:result.email,
+              password:result.password
+            }
+            userCreatedProducer(addedUser)
           }
         } catch (error: any) {
           next(error)

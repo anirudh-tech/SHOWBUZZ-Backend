@@ -28,5 +28,5 @@ const repositories = __importStar(require("../infrastructure/database/mongoDB/re
 const useCases = __importStar(require("../application/useCases"));
 exports.dependencies = {
     useCases,
-    repositories
+    repositories,
 };

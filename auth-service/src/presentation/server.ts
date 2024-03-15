@@ -24,7 +24,6 @@ app.use((
       const errorResponse = {
       errors: [{ message: err?.message || 'Something went wrong' }],
     };
-  
     return res.status(500).json(errorResponse);
   })
 
