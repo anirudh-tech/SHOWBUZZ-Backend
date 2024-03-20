@@ -1,4 +1,4 @@
-import { ObjectId } from "mongoose";
+import { ObjectId, Types } from "mongoose";
 
 enum Role {
     user = 'user',
@@ -6,7 +6,7 @@ enum Role {
 }
 
 export interface UserEntity {
-    _id?: ObjectId,
+    _id: Types.ObjectId,
     username: string;
     email: string;
     password:string;

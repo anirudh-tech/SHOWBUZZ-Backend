@@ -16,7 +16,9 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use('/auth',proxy('http://localhost:3001/'))
+app.use('/theatre',proxy('http://localhost:3002/'))
 app.use('/movie',proxy('http://localhost:3003/'))
+app.use('/user',proxy('http://localhost:3004/'))
 
 
 app.listen(PORT, () => console.log(`Gateway Running at ${PORT}`))

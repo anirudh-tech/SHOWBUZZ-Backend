@@ -109,9 +109,11 @@ export const signupController = (dependencies: IDependencies) => {
               });
             }
             const addedUser = {
+              _id:result._id,
               username:result.username,
               email:result.email,
-              password:result.password
+              password:result.password,
+              role: result.role
             }
             userCreatedProducer(addedUser)
           }

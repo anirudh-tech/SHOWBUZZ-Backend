@@ -38,7 +38,13 @@ const movieSchema = new mongoose.Schema({
         type: String,
         enum: ['theatre','ott']
     },
-});
+    dateOfRelease: {
+        type: Date,
+    }
+},
+{
+    timestamps: true
+})
 
 export const Movie = model<MovieEntity>('movie', movieSchema);
 

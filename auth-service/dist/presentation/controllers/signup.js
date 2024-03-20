@@ -101,9 +101,11 @@ const signupController = (dependencies) => {
                             });
                         }
                         const addedUser = {
+                            _id: result._id,
                             username: result.username,
                             email: result.email,
-                            password: result.password
+                            password: result.password,
+                            role: result.role
                         };
                         (0, userCreatedProducer_1.userCreatedProducer)(addedUser);
                     }
