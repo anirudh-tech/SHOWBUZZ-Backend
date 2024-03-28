@@ -7,10 +7,11 @@ export const theatreDetailsController = (dependencies: IDependencies) => {
   return async ( req: Request, res: Response, next: NextFunction) => {
     try {
       const id = req.params.id
+      console.log(id,'id from controller')
       const theatre = await theatreDetailsUseCase(dependencies).execute(id);
       res.status(200).json({
         success: true,
-        data: [theatre],
+        data: theatre,
         messages: "theatre fetched!",
       });
     } catch (error: any) {

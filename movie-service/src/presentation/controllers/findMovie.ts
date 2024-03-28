@@ -8,7 +8,8 @@ export const findMovieController = (dependencies: IDependencies) => {
       const {id} = req.params
       console.log(id,'-----id')
       const movie = await findMovieUseCase(dependencies).execute(id)
-      res.status(200).json({
+      console.log(movie,'---movie')
+      res.status(200).json({ 
         success: true,
         data: [movie],
         messages: "Movie fetched!",

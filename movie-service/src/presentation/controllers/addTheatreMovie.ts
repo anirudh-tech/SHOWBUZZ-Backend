@@ -3,6 +3,7 @@ import { dependencies } from "../../config/dependencies"
 import { MovieEntity } from "../../domain/entities/movieEntity"
 import { IDependencies } from "../../application/interfaces/IDependencies"
 import { verifyToken } from "../../utils/jwt/verifyToken"
+import { movieCreatedProducer } from "../../infrastructure/kafka/producers/movieCreatedProducer"
 
 export const addTheatreMovieController = (dependencies: IDependencies) => {
   const {useCases: {addTheatreMovieUseCase}} = dependencies
@@ -15,6 +16,7 @@ export const addTheatreMovieController = (dependencies: IDependencies) => {
       console.log(decodedValue,"=======")
       if(decodedValue.role === 'admin') {
         const movie: MovieEntity | null = await addTheatreMovieUseCase(dependencies).execute(data)
+        movieCreatedProducer(movie)
         res.status(200).json({
           success: true,
           movie: movie,

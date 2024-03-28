@@ -13,7 +13,7 @@ const otpSchema = new Schema({
     createdAt: {
         type: Date,
         default: Date.now,
-        expires: '1m', // Set the expiration time to 1 minutes (in seconds)
+        expires: '1m',
     },
 })
 

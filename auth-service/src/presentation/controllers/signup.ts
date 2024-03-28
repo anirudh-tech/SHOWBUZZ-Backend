@@ -1,4 +1,4 @@
-import e, { NextFunction, Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { IDependencies } from "../../application/interfaces/IDependencies";
 import { signupValidation } from "../../utils/validations/signupValidation";
 import { hashPassword } from "../../utils/bcrypt/hashPassword";

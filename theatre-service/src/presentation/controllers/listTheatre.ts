@@ -3,7 +3,6 @@ import { IDependencies } from "../../application/interfaces/IDependencies";
 
 export const listTheatresController = (dependencies: IDependencies) => {
   const {useCases: {listTheatresUseCase}} = dependencies;
-  console.log("reached here");
   
 
   return async (req: Request, res: Response, next: NextFunction) => {

@@ -15,7 +15,7 @@ const otpSchema = new mongoose_1.Schema({
     createdAt: {
         type: Date,
         default: Date.now,
-        expires: '1m', // Set the expiration time to 1 minutes (in seconds)
+        expires: '1m',
     },
 });
 exports.Otp = (0, mongoose_1.model)("otps", otpSchema);

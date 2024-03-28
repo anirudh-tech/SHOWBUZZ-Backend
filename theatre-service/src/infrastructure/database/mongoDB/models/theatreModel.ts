@@ -1,17 +1,64 @@
 import mongoose, { Schema, model } from "mongoose";
 import { ITheatreEntity } from "../../../../domain/entities/theatreEntities";
 
-const TheatreSchema: Schema<ITheatreEntity> = new Schema(
+const selectedTimeSchema = new Schema({
+  hour: {
+    type: Number,
+    required: true
+  },
+  min: {
+    type: Number,
+    required: true
+  }
+});
+
+const selectedDateTimeSchema = new Schema({
+  date: {
+    type: Date,
+    required: true
+  },
+  selectedTimes: {
+    type: [selectedTimeSchema], 
+    required: true,
+    default: [] 
+  }
+});
+
+const TheatreSchema = new Schema (
   {
     username: { type: String, required: true },
     email: { type: String, required: true },
     password: { type: String, required: true },
-    selectedMovies: [{ type: Schema.Types.ObjectId }],
-    availableSeats: { type: String },
-    totalAmountPaid: {type: Number,  default: 0}
+    totalAmountPaid: {type: Number,  default: 0},
+    screens: [{
+      screenName: { type: String, required: true },
+      availableSeats: { type: String },
+      selectedMovies:[{
+        movieId: {
+          type: Schema.Types.ObjectId,
+          ref: 'movie',
+          required: true
+        },
+        selectedDateTimes: {
+          type: [selectedDateTimeSchema], 
+          required: true,
+          default: []
+        },
+        selectedLanguages: {
+          type: [String], 
+          required: true,
+          default: [] 
+        },
+        selectedFormats: {
+          type: [String], 
+          required: true,
+          default: [] 
+        }
+      }]
+    }]
   },
   {
     timestamps: true,
-  });
+  } );
 
 export const Theatre = model<ITheatreEntity>("theatres", TheatreSchema);

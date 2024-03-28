@@ -10,7 +10,6 @@ export const runConsumer = async () => {
             fromBeginning: true
         })
         const subscriber: any = createSubscriber()
-        console.log('hello')
         await consumer.run({
             eachMessage: async ({message}) => {
                 const {key, value} = message
