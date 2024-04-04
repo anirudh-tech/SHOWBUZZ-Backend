@@ -4,9 +4,9 @@ export const listTheatresUseCase = (dependencies: IDependencies) => {
   const {repositories: {listTheatres}} = dependencies;
 
   return {
-    execute: async () => {
+    execute: async (id: string,date:string) => {
       try {
-        return await listTheatres();
+        return await listTheatres(id,date);
       } catch (error: any) {
         throw new Error(error?.message)
       }

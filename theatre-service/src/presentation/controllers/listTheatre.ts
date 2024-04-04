@@ -7,11 +7,14 @@ export const listTheatresController = (dependencies: IDependencies) => {
 
   return async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const theatres = await listTheatresUseCase(dependencies).execute();
+      const id = req.params.id
+      console.log(id,'at controller--------------------------')
+      const date = req.params.date
+      const theatres = await listTheatresUseCase(dependencies).execute(id, date);
       res.status(200).json({
         success: true,
         data: theatres,
-        messages: "Movie fetched!",
+        messages: "theatres fetched!",
       });
     } catch (error: any) {
       next(error);

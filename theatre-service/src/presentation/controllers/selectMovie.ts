@@ -15,6 +15,7 @@ export const selectMoviesController = (dependencies: IDependencies) => {
 
   return async (req: Request, res: Response, next: NextFunction) => {
     try {
+      console.log(req.body,'---req.body')
       const { selectedDates,selectedScreens, selectedTimes, selectedLanguages, selectedFormats, movieId, theatreId } = req.body
     const startDate = new Date(selectedDates[0].year, selectedDates[0].month , selectedDates[0].day);
     const endDate = new Date(selectedDates[1].year, selectedDates[1].month , selectedDates[1].day );

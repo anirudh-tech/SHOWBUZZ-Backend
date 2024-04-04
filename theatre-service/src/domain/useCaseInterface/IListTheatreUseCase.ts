@@ -1,5 +1,5 @@
 import { ITheatreEntity } from "../entities/theatreEntities";
 
 export interface IListTheatreUseCase{
-  execute(): Promise<ITheatreEntity[] | null>;
+  execute(id: string, date: string): Promise<ITheatreEntity[] | null>;
 }
