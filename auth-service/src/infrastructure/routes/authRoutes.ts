@@ -2,7 +2,7 @@ import { Router } from "express";
 import { IDependencies } from "../../application/interfaces/IDependencies";
 import { controllers } from "../../presentation/controllers";
 export const authRoutes = (dependencies: IDependencies) => {
-    const {signup,login,isExist,logout} = controllers(dependencies);
+    const {signup,login,isExist,logout,updateUser} = controllers(dependencies);
 
     const router = Router();
 
@@ -14,6 +14,9 @@ export const authRoutes = (dependencies: IDependencies) => {
 
     router.route("/isExist")
         .get(isExist)
+
+    router.route("/updateUser")
+        .post(updateUser)
 
     router.route("/logout")
         .get(logout)

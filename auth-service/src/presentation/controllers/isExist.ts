@@ -17,6 +17,7 @@ export const isExistController = (dependencies: IDependencies) =>{
             }
 
         } catch (error) {
+            res.clearCookie("user_jwt");
             next(error)
         }
     }

@@ -3,6 +3,8 @@ import { ITheatreEntity } from "../../../../domain/entities";
 import { Theatre } from "../models/theatreModel"
 
 export const listTheatres = async (movieId: string, date: string) => {
+  console.log("🚀 ~ file: listTheatres.ts:6 ~ listTheatres ~ date:", date)
+  console.log("🚀 ~ file: listTheatres.ts:6 ~ listTheatres ~ movieId:", movieId)
   try {
  
     // Use the parsed date in the MongoDB query

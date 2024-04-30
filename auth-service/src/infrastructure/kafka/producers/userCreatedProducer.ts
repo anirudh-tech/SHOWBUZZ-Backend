@@ -13,23 +13,37 @@ export const userCreatedProducer = async (
     try {
         await producer.connect()
         if(data.role === 'user' || data.role === 'admin'){
-            const message = {
+            const messages : any = [{
                 topic: 'to-user',
                 messages: [{
                     key: 'userCreated',
                     value: JSON.stringify(data)
                 }]
-            };
-            await  producer.send(message);
+            },
+            {
+                topic: 'to-payment',
+                messages: [{
+                    key: 'userCreated',
+                    value: JSON.stringify(data)
+                }]
+            }];
+            await producer.sendBatch({topicMessages: messages})
         } else if ( data.role === 'theatre') {
-            const message = {
+            const messages : any = [{
                 topic: 'to-theatre',
                 messages: [{
                     key: 'theatreCreated',
                     value: JSON.stringify(data)
                 }]
-            };
-            await  producer.send(message);
+            },
+            {
+                topic: 'to-payment',
+                messages: [{
+                    key: 'theatreCreated',
+                    value: JSON.stringify(data)
+                }]
+            }];
+            await producer.sendBatch({topicMessages: messages})
         }
     } catch (error: any) {
         console.error('kafka produce error', error?.message);

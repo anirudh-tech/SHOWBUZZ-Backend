@@ -9,4 +9,6 @@ export interface ITheatreEntity {
     screens:  IScreen[];
     availableSeats: string;
     totalAmountPaid: number;
+    createdAt: Date;
+    status: string;
 }

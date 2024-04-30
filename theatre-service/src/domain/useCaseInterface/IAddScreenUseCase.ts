@@ -1,5 +1,5 @@
 import { ITheatreEntity } from "../entities";
 
 export interface IAddScreenUseCase {
-  execute(name: string, theatreId: string): Promise <ITheatreEntity | null>
+  execute(screenInput: string,moneyInput: string, theatreId: string): Promise <ITheatreEntity | null>
 }

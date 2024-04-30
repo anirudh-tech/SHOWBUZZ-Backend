@@ -19,3 +19,4 @@ __exportStar(require("./checkUserEmailUseCase"), exports);
 __exportStar(require("./verifyOtpUseCase"), exports);
 __exportStar(require("./loginUserUseCase"), exports);
 __exportStar(require("./isExistUseCase"), exports);
+__exportStar(require("./updateUserUseCase"), exports);

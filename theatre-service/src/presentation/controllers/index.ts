@@ -5,6 +5,9 @@ import { selectMoviesController } from "./selectMovie";
 import { addScreenController } from "./addScreen";
 import { allTheatreDetailsController } from "./allTheatreDetails";
 import { setSeatLayoutController } from "./setSeatLayout";
+import { timeDetailsController } from "./timeDetails";
+import { allTheatresController } from "./allTheatres";
+import { updateStatusController } from "./updateStatus";
 
 export const controllers = (dependencies: IDependencies) => {
   return {
@@ -13,6 +16,9 @@ export const controllers = (dependencies: IDependencies) => {
     selectMovies: selectMoviesController(dependencies),
     addScreen: addScreenController(dependencies),
     allTheatreDetails: allTheatreDetailsController(dependencies),
-    setSeatLayout: setSeatLayoutController(dependencies)
+    setSeatLayout: setSeatLayoutController(dependencies),
+    timeDetails: timeDetailsController(dependencies),
+    allTheatres: allTheatresController(dependencies),
+    updateStatus: updateStatusController(dependencies)
   }
 }

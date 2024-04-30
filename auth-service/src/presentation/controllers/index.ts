@@ -3,6 +3,7 @@ import { isExistController } from "./isExist";
 import { loginController } from "./login";
 import { logoutController } from "./logout";
 import { signupController } from "./signup";
+import { updateUserController } from "./updateUser";
 
 export const controllers = (dependencies: IDependencies) => {
     return {
@@ -10,5 +11,6 @@ export const controllers = (dependencies: IDependencies) => {
         login: loginController(dependencies),
         isExist: isExistController(dependencies),
         logout: logoutController(dependencies),
+        updateUser: updateUserController(dependencies)
     }
 }

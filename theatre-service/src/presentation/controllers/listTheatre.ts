@@ -8,8 +8,8 @@ export const listTheatresController = (dependencies: IDependencies) => {
   return async (req: Request, res: Response, next: NextFunction) => {
     try {
       const id = req.params.id
-      console.log(id,'at controller--------------------------')
       const date = req.params.date
+      console.log(id,date,'at controller--------------------------')
       const theatres = await listTheatresUseCase(dependencies).execute(id, date);
       res.status(200).json({
         success: true,

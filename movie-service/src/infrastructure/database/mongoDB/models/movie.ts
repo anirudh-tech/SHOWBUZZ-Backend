@@ -18,9 +18,9 @@ const movieSchema = new mongoose.Schema({
     format: [{
         type: String,
     }],
-    languagesAvailable: [{
+    languagesAvailable: {
         type: String,
-    }],
+    },
     image: {
         type: String,
         required: true,
@@ -39,6 +39,10 @@ const movieSchema = new mongoose.Schema({
     },
     dateOfRelease: {
         type: Date,
+    },
+    status: {
+        type: String,
+        default: "active"
     }
 },
 {

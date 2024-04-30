@@ -1,5 +1,4 @@
-import { IAddScreenUseCase, IListTheatreUseCase, ISelectMoviesUseCase, ITheatreDetails } from "../../domain/useCaseInterface";
-import { ISetSeatLayoutUseCase } from "../../domain/useCaseInterface/ISetSeatLayoutUseCase";
+import { IAddScreenUseCase, IListTheatreUseCase, ISelectMoviesUseCase, ISetSeatLayoutUseCase, ITheatreDetails, ITimeDetailsUseCase } from "../../domain/useCaseInterface";
 import { IDependencies } from "./IDependencies";
 
 export interface IUseCases {
@@ -8,4 +7,5 @@ export interface IUseCases {
   selectMoviesUseCase: (dependencies: IDependencies) => ISelectMoviesUseCase
   addScreenUseCase: (dependencies: IDependencies) => IAddScreenUseCase
   setSeatLayoutUseCase: (dependencies: IDependencies) => ISetSeatLayoutUseCase
+  timeDetailsUseCase: (dependencies: IDependencies) => ITimeDetailsUseCase
 }

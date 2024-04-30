@@ -10,76 +10,46 @@ export const selectMovies = async ({
   theatreId
 }: IProps,selectedScreens: string[]) => {
   try {
-    let selectedMovies: any = {
-      selectedDateTimes,
-      selectedLanguages,
-      selectedFormats,
-      movieId,
-    };
-
-    console.log(selectedDateTimes,
-      selectedLanguages,
-      selectedFormats,
-      movieId,
-      theatreId,
-      selectedScreens,
-      typeof(selectedScreens)
-      );
-console.log(selectedScreens);
-console.log(typeof selectedScreens);
-
-
-// const theatre = await Theatre.findOne(
-//   { 
-//     _id: theatreId,
-//     "screens.screenName": { $in: selectedScreens } ,
-//   },
-//   { 
-//     $push: {
-//       "screens.$[].selectedMovies": selectedMovies
-//     }
-//   },
-//   { new: true }
-// );
-
-
-      // console.log(theatre,'--theatre')
-      // if (!theatre) {
-      //   throw new Error('Movie already added');
-      // }
-
-    const theatre = await Theatre.findById(theatreId);
+    const theatre = await Theatre.findById(theatreId).populate('screens.seatLayoutId')
     const matchingScreens = theatre?.screens.filter((screen) => selectedScreens?.includes(screen.screenName)) as IScreen[];
     console.log(matchingScreens, 'matchingScreens')
 
     if (!matchingScreens || matchingScreens.length === 0) {
       throw new Error(`No screens found with the provided screenNames`);
     }
-
+    console.log(selectedDateTimes,'selectedTimes------------->')
     const movieExists = matchingScreens.some((screen: IScreen) =>
       screen.selectedMovies.some((movie) => movie?.movieId?.toString() === movieId)
     );
     console.log(movieExists,'----movie Exist')
+    matchingScreens.forEach(screen => {
+      screen.selectedMovies.push({
+        movieId,
+        selectedDateTimes,
+        selectedLanguages,
+        selectedFormats
+      });
+    });
+    console.log(matchingScreens,'----------->')
+    matchingScreens.forEach(screen => {
+      const seatLayout = screen.seatLayoutId
+      screen.selectedMovies.forEach(movie => {
+        movie.selectedDateTimes?.forEach(date => {
+          date.selectedTimes.forEach(time => { 
+            time.seatsAvailable = seatLayout
+          })
+        })
+      })
+    })
     if(movieExists){
       throw new Error('Same Movies Cannot Be Added')
     }
-    matchingScreens.forEach(screen => {
-      screen.selectedMovies.push({
-          movieId,
-          selectedDateTimes,
-          selectedLanguages,
-          selectedFormats
-      });
-  });
-
   if (theatre) {
     await theatre.save();
   } else {
     throw new Error('Theatre not found');
   }
-
   return theatre;
-
   } catch (error: any) {
     throw new Error(error.message);
   }

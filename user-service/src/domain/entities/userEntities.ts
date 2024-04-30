@@ -9,4 +9,5 @@ export interface IUserEntity {
     StreamingTime: number; // In minutes
     Subscribed: boolean;
     plan: string;
+    status: string;
 }

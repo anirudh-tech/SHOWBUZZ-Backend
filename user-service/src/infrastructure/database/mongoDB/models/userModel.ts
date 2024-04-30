@@ -10,6 +10,7 @@ const UserSchema: Schema<IUserEntity> = new Schema(
     StreamingTime: { type: Number },
     Subscribed: { type: Boolean, default: false },
     plan: { type: String },
+    status:{type: String},
   },
   {
     timestamps: true,

@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { IDependencies } from "../../application/interfaces/IDependencies";
 import { format } from "date-fns";
+import { theatreEditedProducer } from "../../infrastructure/kafka/producers/theatreEditedProducer";
 interface ITime{
   hour: number;
   min: number;
@@ -16,10 +17,10 @@ export const selectMoviesController = (dependencies: IDependencies) => {
   return async (req: Request, res: Response, next: NextFunction) => {
     try {
       console.log(req.body,'---req.body')
-      const { selectedDates,selectedScreens, selectedTimes, selectedLanguages, selectedFormats, movieId, theatreId } = req.body
+      const { selectedDates ,selectedScreens, selectedTimes, selectedLanguages, selectedFormats, movieId, theatreId }: any = req.body
     const startDate = new Date(selectedDates[0].year, selectedDates[0].month , selectedDates[0].day);
     const endDate = new Date(selectedDates[1].year, selectedDates[1].month , selectedDates[1].day );
-    const selectedDateTimes: IDate[] = [];
+    const selectedDateTimes: any = [];
     let currentDate = startDate;
     while(currentDate <= endDate){
       const dateObj: IDate = {
@@ -39,6 +40,7 @@ export const selectMoviesController = (dependencies: IDependencies) => {
     }
     console.log('here')
     const response = await selectMoviesUseCase(dependencies).execute({selectedDateTimes, selectedLanguages, selectedFormats, movieId, theatreId},selectedScreens);
+    await theatreEditedProducer(response)
     res.status(200).json({
       success: true,
       data: response,

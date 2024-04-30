@@ -19,6 +19,7 @@ app.use('/auth',proxy('http://localhost:3001/'))
 app.use('/theatre',proxy('http://localhost:3002/'))
 app.use('/movie',proxy('http://localhost:3003/'))
 app.use('/user',proxy('http://localhost:3004/'))
+app.use('/payment',proxy('http://localhost:3005/'))
 
 
 app.listen(PORT, () => console.log(`Gateway Running at ${PORT}`))

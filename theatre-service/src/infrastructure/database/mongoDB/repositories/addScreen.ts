@@ -1,12 +1,11 @@
 import { ITheatreEntity } from "../../../../domain/entities";
 import { Theatre } from "../models/theatreModel";
 
-export const addScreen = async (name: string, theatreId: string) => {
+export const addScreen = async (screenInput: string, moneyInput: string, theatreId: string) => {
   try {
-    console.log(name,theatreId,'name---->')
     const theatre = await Theatre.findOneAndUpdate(
       { _id: theatreId },
-      { $push: { screens: { screenName: name } } },
+      { $push: { screens: { screenName: screenInput, seatCost: moneyInput } } },
       { new: true }
     );
     return theatre as ITheatreEntity

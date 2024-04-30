@@ -13,3 +13,5 @@ export interface UserEntity {
     role: Role;
     otp?: string;
 }
+
+

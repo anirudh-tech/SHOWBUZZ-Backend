@@ -1,4 +1,4 @@
-import { ICheckUserEmailUseCase, IIsExistUseCase, ILoginUserUseCase, ISignupUserUseCase, IVerifyOtpUseCase } from "../../domain/useCaseInterface";
+import { ICheckUserEmailUseCase, IIsExistUseCase, ILoginUserUseCase, ISignupUserUseCase, IUpdateUserUseCase, IVerifyOtpUseCase } from "../../domain/useCaseInterface";
 import { IDependencies } from "./IDependencies";
 
 export interface IUseCases {
@@ -7,4 +7,5 @@ export interface IUseCases {
     verifyOtpUseCase: (dependencies: IDependencies) => IVerifyOtpUseCase;
     loginUserUseCase: (dependencies: IDependencies) => ILoginUserUseCase;
     isExistUseCase: (dependencies: IDependencies) => IIsExistUseCase; 
+    updateUserUseCase: (dependencies: IDependencies) => IUpdateUserUseCase;
 }

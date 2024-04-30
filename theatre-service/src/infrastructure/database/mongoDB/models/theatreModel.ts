@@ -10,9 +10,17 @@ const selectedTimeSchema = new Schema({
     type: Number,
     required: true,
   },
-  seatLayoutId: {
-    type: Schema.Types.ObjectId,
-    ref: "seat"
+  seatsAvailable: {
+    theatreId: { type: String },
+    screenId: { type: String },
+    rows: [
+      [
+        {
+          number: { type: String },
+          booked: { type: Boolean, default: false },
+        },
+      ],
+    ],
   },
 });
 
@@ -34,33 +42,35 @@ const TheatreSchema = new Schema(
     email: { type: String, required: true },
     password: { type: String, required: true },
     totalAmountPaid: { type: Number, default: 0 },
+    status: {type: String, default: 'active'},
     screens: [
       {
         screenName: { type: String, required: true },
-        availableSeats: [{
+        seatLayoutId: {
           type: Schema.Types.ObjectId,
-          ref: "screen",
-        }],
+          ref: "seat",
+        },
+        seatCost: { type: Number, required: true },
         selectedMovies: [
           {
             movieId: {
               type: Schema.Types.ObjectId,
               ref: "movie",
-              required: true,
+              
             },
             selectedDateTimes: {
               type: [selectedDateTimeSchema],
-              required: true,
+              
               default: [],
             },
             selectedLanguages: {
               type: [String],
-              required: true,
+          
               default: [],
             },
             selectedFormats: {
               type: [String],
-              required: true,
+              
               default: [],
             },
           },

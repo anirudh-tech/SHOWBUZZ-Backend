@@ -4,9 +4,9 @@ export const addScreenUseCase = (dependencies: IDependencies) => {
   const {repositories: {addScreen}} = dependencies;
 
   return {
-    execute: async(name: string, theatreId: string) => {
+    execute: async(screenInput: string,moneyInput: string,  theatreId: string) => {
       try {
-        return await addScreen(name, theatreId)
+        return await addScreen(screenInput, moneyInput, theatreId)
       } catch (error: any) {
         throw new Error(error?.message)
       }

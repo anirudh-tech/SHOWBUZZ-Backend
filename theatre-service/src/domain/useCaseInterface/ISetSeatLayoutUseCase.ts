@@ -1,5 +1,5 @@
 import { ITheatreEntity } from "../entities";
 
 export interface ISetSeatLayoutUseCase {
-  execute(theatreData): Promise<ITheatreEntity | null>
+  execute(theatreData:any): Promise<ITheatreEntity | null>
 }
