@@ -113,7 +113,8 @@ export const signupController = (dependencies: IDependencies) => {
               username:result.username,
               email:result.email,
               password:result.password,
-              role: result.role
+              role: result.role,
+              status: result.status
             }
             userCreatedProducer(addedUser)
           }

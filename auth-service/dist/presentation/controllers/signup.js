@@ -105,7 +105,8 @@ const signupController = (dependencies) => {
                             username: result.username,
                             email: result.email,
                             password: result.password,
-                            role: result.role
+                            role: result.role,
+                            status: result.status
                         };
                         (0, userCreatedProducer_1.userCreatedProducer)(addedUser);
                     }

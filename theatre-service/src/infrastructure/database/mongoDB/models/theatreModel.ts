@@ -43,6 +43,7 @@ const TheatreSchema = new Schema(
     password: { type: String, required: true },
     totalAmountPaid: { type: Number, default: 0 },
     status: {type: String, default: 'active'},
+    role: {type: String},
     screens: [
       {
         screenName: { type: String, required: true },

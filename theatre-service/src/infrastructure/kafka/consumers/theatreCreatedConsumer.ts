@@ -6,6 +6,8 @@ export default async (data: {
   username: string;
   email: string;
   password: string;
+  role: string;
+  status: string;
 }) => {
     try {
         const theatre = new Theatre({
@@ -13,6 +15,8 @@ export default async (data: {
             username: data.username,
             email: data.email,
             password: data.password,
+            role: data.role,
+            status: data.status,
             
         })
 

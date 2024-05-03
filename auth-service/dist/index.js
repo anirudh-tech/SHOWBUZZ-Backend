@@ -14,6 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const server_1 = __importDefault(require("./presentation/server"));
 const dbConnection_1 = __importDefault(require("./infrastructure/database/dbConnection"));
+const consumer_1 = require("./infrastructure/kafka/consumer");
 //  test
 (() => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -21,6 +22,12 @@ const dbConnection_1 = __importDefault(require("./infrastructure/database/dbConn
         yield (0, dbConnection_1.default)()
             .catch((error) => {
             console.log(error === null || error === void 0 ? void 0 : error.message);
+            process.exit();
+        });
+        yield (0, consumer_1.runConsumer)()
+            .then(() => console.log("Kafka consumer is running"))
+            .catch((error) => {
+            console.error(`Error while initializing Kafka consumer: ${error}`);
             process.exit();
         });
     }

@@ -12,6 +12,7 @@ export interface UserEntity {
     password:string;
     role: Role;
     otp?: string;
+    status?: string;
 }
 
 

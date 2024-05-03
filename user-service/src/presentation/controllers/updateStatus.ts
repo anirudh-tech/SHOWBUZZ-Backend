@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { IDependencies } from "../../application/interfaces/IDependencies";
 import { verifyToken } from "../../utils/verifyToken";
+import { userEditedProducer } from "../../infrastructure/kafka/producers/userEditedProducer";
 
 export const updateStatusController = (dependencies: IDependencies) => {
   const {useCases: {updateStatusUseCase}} = dependencies
@@ -15,6 +16,7 @@ export const updateStatusController = (dependencies: IDependencies) => {
       const status = req.body.newStatus
       console.log("🚀 ~ file: updateStatus.ts:15 ~ return ~ status:", req.body)
       const data = await updateStatusUseCase(dependencies).execute({id,status })
+      userEditedProducer(data)
       res.status(200).json({
         success: true,
         data,
