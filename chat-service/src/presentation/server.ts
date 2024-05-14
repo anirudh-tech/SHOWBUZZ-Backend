@@ -1,8 +1,10 @@
 import express,{Application, NextFunction, Request, Response} from "express"
 import dotenv from "dotenv";
+import http from "http";
 import cookieParser from "cookie-parser";
-import { userRoutes } from "../infrastructure/routes/userRoutes";
+import { chatRoutes } from "../infrastructure/routes/chatRoutes";
 import { dependencies } from "../config/dependencies";
+import connectSocketIo from "../infrastructure/socket/connection";
 
 dotenv.config();
 const app: Application = express();
@@ -17,7 +19,10 @@ app.use((req, res, next) => {
   next();
 })
 
-app.use("/", userRoutes(dependencies));
+const server = http.createServer(app);
+
+connectSocketIo(server);
+app.use("/", chatRoutes(dependencies));
 
 app.use((
     err: Error,
@@ -32,7 +37,7 @@ app.use((
     return res.status(500).json(errorResponse);
   })
 
-  app.listen(PORT, () => {
+  server.listen(PORT, () => {
     console.log(`connected to user service at ${PORT}`) 
 }) 
 

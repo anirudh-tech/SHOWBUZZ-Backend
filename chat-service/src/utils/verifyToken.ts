@@ -10,13 +10,3 @@ export const verifyToken = (token: string) => {
     })
 }
 
-
-// function f(x) {
-//     x= "x-" + x;
-//     return function (y) {
-//         y =  "y-" + x;
-//         return function(z) {
-//             return "z-" + 
-//         }
-//     }
-// }

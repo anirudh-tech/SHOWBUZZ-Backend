@@ -1,1 +1,3 @@
-export * from './updateStatus'
+export * from './createGroup'
+export * from './listGroups'
+export * from './getMessage'

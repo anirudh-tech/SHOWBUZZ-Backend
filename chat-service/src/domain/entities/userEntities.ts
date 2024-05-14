@@ -10,4 +10,5 @@ export interface IUserEntity {
     Subscribed: boolean;
     plan: string;
     status: string;
+    role: string;
 }

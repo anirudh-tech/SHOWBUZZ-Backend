@@ -1,5 +1,8 @@
-import { IUserEntity } from "../../domain/entities/userEntities";
+import { IConversationEntity } from "../../domain/entities/conversationEntities";
+import { IMessageEntity } from "../../domain/entities/messageEntities";
 
 export interface IRepositories {
-  updateStatus:({id, status}: any) => Promise<IUserEntity | null>
+  createGroup:({id, groupName}: any) => Promise<IConversationEntity | null>
+  listGroups: (id: string) => Promise<IConversationEntity | null>
+  getMessage: (id: string) => Promise<IMessageEntity[] | null>
 }

@@ -27,6 +27,7 @@
     "socket.io": "^4.7.5"
   },
   "devDependencies": {
-    "@types/cookie-parser": "^1.4.7"
+    "@types/cookie-parser": "^1.4.7",
+    "@types/jsonwebtoken": "^9.0.6"
   }
 }

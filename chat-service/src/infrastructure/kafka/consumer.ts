@@ -6,7 +6,7 @@ export const runConsumer = async () => {
         await consumer.connect()
 
         await consumer.subscribe({
-            topic: 'to-user',
+            topic: 'to-chat',
             fromBeginning: true
         })
         const subscriber: any = createSubscriber()

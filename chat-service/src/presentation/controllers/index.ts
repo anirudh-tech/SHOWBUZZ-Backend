@@ -1,10 +1,12 @@
 import { IDependencies } from "../../application/interfaces/IDependencies"
-import { listUsersController } from "./listUsers"
-import { updateStatusController } from "./updateStatus"
+import { createGroupController } from "./createGroup"
+import { getMessageController } from "./getMessage"
+import { listGroupsController } from "./listGroups"
 
 export const controllers = (dependencies: IDependencies) => {
   return {
-      listUsers: listUsersController(),
-      updateStatus: updateStatusController(dependencies)
+    createGroup: createGroupController(dependencies),
+    listGroups: listGroupsController(dependencies),
+    getMessage: getMessageController(dependencies)
   }
 }

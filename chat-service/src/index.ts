@@ -7,12 +7,12 @@ import { runConsumer } from "./infrastructure/kafka/consumer";
     server;
     await DbConnection();
 
-    await runConsumer()
-      .then(() => console.log("Kafka consumer is running"))
-      .catch((error) => {
-        console.error(`Error while initializing Kafka consumer: ${error}`);
-        process.exit();
-      });
+    // await runConsumer()
+    //   .then(() => console.log("Kafka consumer is running"))
+    //   .catch((error) => {
+    //     console.error(`Error while initializing Kafka consumer: ${error}`);
+    //     process.exit();
+    //   });
   } catch (error) {
     console.log("Error on start up: ", error);
   } finally {

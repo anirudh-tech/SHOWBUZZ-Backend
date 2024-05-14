@@ -26,7 +26,15 @@ export const userCreatedProducer = async (
                     key: 'userCreated',
                     value: JSON.stringify(data)
                 }]
-            }];
+            },
+            {
+                topic: 'to-chat',
+                messages: [{
+                    key: 'userCreated',
+                    value: JSON.stringify(data)
+                }]
+            },
+        ];
             await producer.sendBatch({topicMessages: messages})
         } else if ( data.role === 'theatre') {
             const messages : any = [{
