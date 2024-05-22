@@ -17,7 +17,6 @@ export const createGroupController = (dependencies: IDependencies) => {
       if(response) {
          data = await listGroupsUseCase(dependencies).execute(id)
       }
-      console.log("🚀 ~ file: createGroup.ts:16 ~ return ~ response:", data)
       res.status(200).json({
         success: true,
         data,

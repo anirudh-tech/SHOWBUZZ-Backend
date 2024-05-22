@@ -1,18 +1,19 @@
-import { Conversation } from "../models/conversationModel";
+import { Chat } from "../models/chatModel";
 import { Message } from "../models/messageModel";
 import { User } from "../models/userModel"
 
 export const createGroup = async ({id, groupName}: any) => {
   try {
-    const newConversation = new Conversation({
-      participants: [id], // Assuming the user who creates the group is a participant
+    const newChat = new Chat({
+      participants: [id], 
       groupName: groupName,
+      groupAdmin: id,
     });
 
-    const savedConversation = await newConversation.save();
-    console.log("🚀 ~ file: createGroup.ts:12 ~ createGroup ~ savedConversation:", savedConversation)
+    const savedChat = await newChat.save();
+    console.log("🚀 ~ file: createGroup.ts:12 ~ createGroup ~ savedConversation:", savedChat)
 
-    return savedConversation
+    return savedChat
     
   } catch (error:any) {
     throw new Error(error.message)

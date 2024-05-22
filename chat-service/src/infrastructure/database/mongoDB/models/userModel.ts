@@ -1,7 +1,7 @@
 import mongoose, { Schema, model } from "mongoose";
 import { IUserEntity } from "../../../../domain/entities/userEntities";
 
-const UserSchema: Schema<IUserEntity> = new Schema(
+const userSchema: Schema<any> = new Schema(
   {
     username: { type: String, required: true },
     email: { type: String, required: true },
@@ -17,4 +17,4 @@ const UserSchema: Schema<IUserEntity> = new Schema(
   }
 );
 
-export const User = model<IUserEntity>("users", UserSchema);
+export const User = model('user', userSchema);

@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import { chatRoutes } from "../infrastructure/routes/chatRoutes";
 import { dependencies } from "../config/dependencies";
 import connectSocketIo from "../infrastructure/socket/connection";
+import { messageRoutes } from "../infrastructure/routes/messageRoutes";
 
 dotenv.config();
 const app: Application = express();
@@ -22,7 +23,8 @@ app.use((req, res, next) => {
 const server = http.createServer(app);
 
 connectSocketIo(server);
-app.use("/", chatRoutes(dependencies));
+app.use("/chat", chatRoutes(dependencies));
+app.use("/message", messageRoutes(dependencies));
 
 app.use((
     err: Error,

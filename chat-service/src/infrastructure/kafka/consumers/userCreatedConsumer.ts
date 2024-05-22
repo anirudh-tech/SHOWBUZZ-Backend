@@ -1,23 +1,22 @@
 import { ObjectId } from "mongoose";
-import {User} from '../../database/mongoDB/models/userModel'
+import { User } from "../../database/mongoDB/models/userModel";
 
 export default async (data: {
-    _id: string;
+  _id: string;
   username: string;
   email: string;
   password: string;
 }) => {
-    try {
-        
-        const user = new User({
-            _id: data._id,
-            username: data.username,
-            email: data.email,
-            password: data.password,
-        })
+  try {
+    const user = new User({
+      _id: data._id,
+      username: data.username,
+      email: data.email,
+      password: data.password,
+    });
 
-        await user.save()
-    } catch (error: any) {
-        throw new Error(error.message);
-    }
+    await user.save();
+  } catch (error: any) {
+    throw new Error(error.message);
+  }
 };
