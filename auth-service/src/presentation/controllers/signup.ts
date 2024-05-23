@@ -81,7 +81,7 @@ export const signupController = (dependencies: IDependencies) => {
 
             value.password = await hashPassword(value.password);
 
-            const result = await signupUserUseCase(dependencies).execute(value);
+            const result: any = await signupUserUseCase(dependencies).execute(value);
 
             if (!result) {
               throw new Error("User creation failed!");
@@ -108,13 +108,19 @@ export const signupController = (dependencies: IDependencies) => {
                 message: "User created!",
               });
             }
+            let status;
+            if(result.role == 'theatre'){
+              status = "pending"
+            } else {
+              status = "active"
+            }
             const addedUser = {
               _id:result._id,
               username:result.username,
               email:result.email,
               password:result.password,
               role: result.role,
-              status: result.status
+              status: status
             }
             userCreatedProducer(addedUser)
           }

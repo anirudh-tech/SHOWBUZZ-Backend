@@ -2,14 +2,10 @@ import { Chat } from "../models/chatModel";
 
 export const addToGroup = async({ chatId, userId }: any) => {
   try {
-    const existingChat = await Chat.find({_id: chatId, participants: userId });
-    if(existingChat) {
-      throw new Error("Already added to group")
-    }
     const updatedChat = await Chat.findByIdAndUpdate(
       chatId,
       {
-        $push: { participants: userId },
+        $addToSet: { participants: userId },
       },
       { new: true }
     );

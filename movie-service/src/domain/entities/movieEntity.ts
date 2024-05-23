@@ -7,8 +7,9 @@ export interface MovieEntity {
   genre:string;
   format?: string;
   languagesAvailable?: string;
-  image: string;
+  image?: string;
+  video?: string;
   banner: string;
   cast: string;
-  type: string;
+  type?: string;
 }

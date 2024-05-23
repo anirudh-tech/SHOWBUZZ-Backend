@@ -100,13 +100,20 @@ const signupController = (dependencies) => {
                                 message: "User created!",
                             });
                         }
+                        let status;
+                        if (result.role == 'theatre') {
+                            status = "pending";
+                        }
+                        else {
+                            status = "active";
+                        }
                         const addedUser = {
                             _id: result._id,
                             username: result.username,
                             email: result.email,
                             password: result.password,
                             role: result.role,
-                            status: result.status
+                            status: status
                         };
                         (0, userCreatedProducer_1.userCreatedProducer)(addedUser);
                     }

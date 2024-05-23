@@ -1,3 +1,4 @@
+import { IAddOttMovieUseCase } from "../../domain/useCaseInterface.ts/IAddOttMovieUseCase";
 import { IAddMovieUseCase } from "../../domain/useCaseInterface.ts/IAddTheatreMovieUseCase";
 import { IEditTheatreMovieUseCase } from "../../domain/useCaseInterface.ts/IEditTheatreMovieUseCase";
 import { IFindMovieUseCase } from "../../domain/useCaseInterface.ts/IFindMovieUseCase";
@@ -7,6 +8,7 @@ import { IDependencies } from "./IDependencies";
 
 export interface IUseCases {
   addTheatreMovieUseCase: (dependencies: IDependencies) => IAddMovieUseCase;
+  addOttMovieUseCase: (dependencies: IDependencies) => IAddOttMovieUseCase;
   getTheatreMoviesUseCase: (dependencies: IDependencies) => IGetTheatreMoviesUseCase;
   findMovieUseCase: (dependencies: IDependencies) => IFindMovieUseCase;
   editTheatreMovieUseCase: (dependencies: IDependencies) => IEditTheatreMovieUseCase;

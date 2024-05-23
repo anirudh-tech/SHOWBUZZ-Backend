@@ -5,11 +5,12 @@ import { controllers } from "../../presentation/controllers";
 import { IDependencies } from "../../application/interfaces/IDependencies";
 
 const mux = new Mux({
-  tokenId: '35005113-0bf8-4c73-956c-d49923336d0c',
-  tokenSecret: 'L4MH/JzWvbLKdDToQPvUtagzJHQL07mpoEN/ASlMbI9AHv/qVjnQ82Bxd49VcGjzS6FthgG/PeU'
+  tokenId: "35005113-0bf8-4c73-956c-d49923336d0c",
+  tokenSecret:
+    "L4MH/JzWvbLKdDToQPvUtagzJHQL07mpoEN/ASlMbI9AHv/qVjnQ82Bxd49VcGjzS6FthgG/PeU",
 });
 
-const { video } = mux
+const { video } = mux;
 export const adminRoutes = (dependencies: IDependencies) => {
   const {
     addTheatreMovie,
@@ -18,6 +19,10 @@ export const adminRoutes = (dependencies: IDependencies) => {
     editTheatreMovie,
     deleteMovie,
     getAllMovies,
+    addOttMovie,
+    getAllOttMovies,
+    getMovieData,
+    listOttMovies
   } = controllers(dependencies);
 
   const router = Router();
@@ -26,6 +31,8 @@ export const adminRoutes = (dependencies: IDependencies) => {
 
   router.route("/listTheatreMovies").get(getTheatreMovies);
 
+  router.route("/listOttMovies").get(listOttMovies);
+
   router.route("/findMovie/:id").get(findMovie);
 
   router.route("/editTheatreMovie").post(editTheatreMovie);
@@ -33,6 +40,12 @@ export const adminRoutes = (dependencies: IDependencies) => {
   router.route("/deleteMovie").post(deleteMovie);
 
   router.route("/getAllMovies").get(getAllMovies);
+
+  router.route("/addOttMovie").post(addOttMovie);
+
+  router.route("/getAllOttMovies").get(getAllOttMovies);
+
+  router.route("/getMovieData/:id").get(getMovieData);
 
   router.route("/uploadVideo").get(async (req: Request, res: Response) => {
     const response = await video.uploads.create({
@@ -46,7 +59,7 @@ export const adminRoutes = (dependencies: IDependencies) => {
   });
 
   router.route("/getPlaybackId").get(async (req: Request, res: Response) => {
-    const uploadId : any = req.query.uploadId;
+    const uploadId: any = req.query.uploadId;
 
     try {
       const upload = await video.uploads.retrieve(uploadId);
@@ -59,7 +72,10 @@ export const adminRoutes = (dependencies: IDependencies) => {
       const asset = await video.assets.retrieve(assetId);
 
       if (asset.playback_ids && asset.playback_ids.length > 0) {
-        console.log("🚀 ~ file: adminRoutes.ts:63 ~ router.route ~ asset.playback_ids[0].id:", asset.playback_ids[0].id)
+        console.log(
+          "🚀 ~ file: adminRoutes.ts:63 ~ router.route ~ asset.playback_ids[0].id:",
+          asset.playback_ids[0].id
+        );
         res.send({
           playback_id: asset.playback_ids[0].id,
         });

@@ -21,6 +21,9 @@ const loginController = (dependencies) => {
             const userCredentials = req.body;
             const user = yield loginUserUseCase(dependencies).execute(userCredentials);
             if (user) {
+                if (user.status === "blocked") {
+                    return res.status(403).json({ message: "You are blocked." });
+                }
                 let payload = {
                     _id: String(user === null || user === void 0 ? void 0 : user._id),
                     email: user === null || user === void 0 ? void 0 : user.email,

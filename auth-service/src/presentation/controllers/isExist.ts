@@ -12,10 +12,13 @@ export const isExistController = (dependencies: IDependencies) =>{
             const user: UserEntity | null = await isExistUseCase(dependencies).execute(token)
             if(!user){
                 throw new Error('User not found');
-            }else {
+                
+            }else if(user.status == "blocked") {
+                // throw new Error('You are blocked.');
+                return res.status(401).json({status: "ok", data: null})
+            } else {
                 res.status(200).json({status: "ok", data: user });
             }
-
         } catch (error) {
             res.clearCookie("user_jwt");
             next(error)

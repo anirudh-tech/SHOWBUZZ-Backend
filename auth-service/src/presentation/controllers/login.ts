@@ -13,6 +13,9 @@ export const loginController = (dependencies: IDependencies) => {
             const userCredentials = req.body
             const user: UserEntity | null = await loginUserUseCase(dependencies).execute(userCredentials)
             if(user) {
+              if(user.status === "blocked") {
+                return res.status(403).json({message: "You are blocked."})
+              }
                 let payload = {
                     _id: String(user?._id),
                     email: user?.email!,

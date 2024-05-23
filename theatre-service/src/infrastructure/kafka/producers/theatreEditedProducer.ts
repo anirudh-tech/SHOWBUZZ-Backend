@@ -8,14 +8,22 @@ export const theatreEditedProducer = async (
     try {
         await producer.connect()
 
-        const message = {
+        const messages : any = [{
+            topic: 'to-auth',
+            messages: [{
+                key: 'theatreEdited',
+                value: JSON.stringify(data)
+            }]
+        },
+        {
             topic: 'to-payment',
             messages: [{
                 key: 'theatreEdited',
                 value: JSON.stringify(data)
             }]
-        };
-        await  producer.send(message);
+        },
+    ];
+        await producer.sendBatch({topicMessages: messages})
     } catch (error: any) {
         console.error('kafka produce error', error?.message);
     } finally {

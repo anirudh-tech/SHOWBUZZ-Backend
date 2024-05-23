@@ -9,7 +9,7 @@ export const allTheatresController = (dependencies: IDependencies) => {
       const page = Number(req.query?.page) || 1;
       const limit = Number(req.query?.limit) || 5;
       const skip = (page - 1) * limit;
-      const theatres = await Theatre.find({}).skip(skip).limit(limit)
+      const theatres = await Theatre.find({status:{$in:["active","blocked"]}}).skip(skip).limit(limit)
       const totalDocuments = await Theatre.countDocuments({status: 'active'});
       const totalPage = Math.ceil(totalDocuments/limit)
 

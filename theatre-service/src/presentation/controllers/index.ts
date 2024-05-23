@@ -8,6 +8,8 @@ import { setSeatLayoutController } from "./setSeatLayout";
 import { timeDetailsController } from "./timeDetails";
 import { allTheatresController } from "./allTheatres";
 import { updateStatusController } from "./updateStatus";
+import { listApprovalRequestsController } from "./listApprovalRequests";
+import { handleApprovalController } from "./handleApproval";
 
 export const controllers = (dependencies: IDependencies) => {
   return {
@@ -19,6 +21,8 @@ export const controllers = (dependencies: IDependencies) => {
     setSeatLayout: setSeatLayoutController(dependencies),
     timeDetails: timeDetailsController(dependencies),
     allTheatres: allTheatresController(dependencies),
-    updateStatus: updateStatusController(dependencies)
+    updateStatus: updateStatusController(dependencies),
+    listApprovalRequests: listApprovalRequestsController(dependencies),
+    handleApproval: handleApprovalController(dependencies),
   }
 }
