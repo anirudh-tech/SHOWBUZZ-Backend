@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: showbuzz-payment-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: showbuzz-payment-service
+  template:
+    metadata:
+      labels:
+        app: showbuzz-payment-service
+    spec:
+      containers:
+      - name: showbuzz-payment-service
+        image: anirudhjagath/showbuzz-payment-service:latest
+        envFrom:
+        - configMapRef:
+            name: payment-config 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: showbuzz-payment-service
+spec:
+  selector:
+    app: showbuzz-payment-service
+  ports:
+  - protocol: TCP
+    port: 3005
+    targetPort: 3005

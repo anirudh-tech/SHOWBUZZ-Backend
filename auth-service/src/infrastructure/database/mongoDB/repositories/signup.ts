@@ -5,6 +5,9 @@ export const signup = async (
     data: UserEntity
 ) : Promise<UserEntity | null > => {
     try {
+        if(data.role == "theatre"){
+            data.status = "pending"
+        }
         const newUser = await User.create(data)
         console.log(newUser,'new user,repo,signup')
         

@@ -11,6 +11,7 @@ export const paymentRoutes = (dependencies: IDependencies) => {
     getAllTicketsInTheatres,
     getAllPayments,
     getAllPaymentsOfTheatre,
+    ticketDetails
   } = controllers(dependencies);
 
   const router = Router();
@@ -28,6 +29,8 @@ export const paymentRoutes = (dependencies: IDependencies) => {
   router.route("/getAllTicketsInTheatres/:id").get(getAllTicketsInTheatres);
 
   router.route("/getAllPaymentsOfTheatre/:id").get(getAllPaymentsOfTheatre);
+
+  router.route("/ticketDetails/:id").get(ticketDetails)
 
   return router;
 };

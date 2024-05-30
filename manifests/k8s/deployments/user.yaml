@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: showbuzz-user-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: showbuzz-user-service
+  template:
+    metadata:
+      labels:
+        app: showbuzz-user-service
+    spec:
+      containers:
+      - name: showbuzz-user-service
+        image: anirudhjagath/showbuzz-user-service:latest
+        envFrom:
+        - configMapRef:
+            name: user-config 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: showbuzz-user-service
+spec:
+  selector:
+    app: showbuzz-user-service
+  ports:
+  - protocol: TCP
+    port: 3004
+    targetPort: 3004

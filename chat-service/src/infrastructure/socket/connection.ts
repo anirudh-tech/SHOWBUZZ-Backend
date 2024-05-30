@@ -28,7 +28,7 @@ const connectSocketIo = (server: Server) => {
     socket.on("new message", (newMessage) => {
       console.log(newMessage,"new Message");
 
-      const chat = newMessage.chatId;
+      const chat = newMessage?.chatId;
       console.log("🚀 ~ file: connection.ts:32 ~ socket.on ~ chat:", chat)
       io.to(chat).emit("message recieved", newMessage);
     });

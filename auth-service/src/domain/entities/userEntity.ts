@@ -10,7 +10,7 @@ export interface UserEntity {
     username: string;
     email: string;
     password:string;
-    role: Role;
+    role: string;
     otp?: string;
     status?: string;
 }

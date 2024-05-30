@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: showbuzz-theatre-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: showbuzz-theatre-service
+  template:
+    metadata:
+      labels:
+        app: showbuzz-theatre-service
+    spec:
+      containers:
+      - name: showbuzz-theatre-service
+        image: anirudhjagath/showbuzz-theatre-service:latest
+        envFrom:
+        - configMapRef:
+            name: theatre-config 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: showbuzz-theatre-service
+spec:
+  selector:
+    app: showbuzz-theatre-service
+  ports:
+  - protocol: TCP
+    port: 3002
+    targetPort: 3002

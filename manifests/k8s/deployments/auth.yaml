@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: showbuzz-auth-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: showbuzz-auth-service
+  template:
+    metadata:
+      labels:
+        app: showbuzz-auth-service
+    spec:
+      containers:
+      - name: showbuzz-auth-service
+        image: anirudhjagath/showbuzz-auth-service:latest
+        envFrom:
+        - configMapRef:
+            name: auth-config 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: showbuzz-auth-service
+spec:
+  selector:
+    app: showbuzz-auth-service
+  ports:
+  - protocol: TCP
+    port: 3001
+    targetPort: 3001

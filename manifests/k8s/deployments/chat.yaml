@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: showbuzz-chat-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: showbuzz-chat-service
+  template:
+    metadata:
+      labels:
+        app: showbuzz-chat-service
+    spec:
+      containers:
+      - name: showbuzz-chat-service
+        image: anirudhjagath/showbuzz-chat-service:latest
+        envFrom:
+        - configMapRef:
+            name: auth-config 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: showbuzz-chat-service
+spec:
+  selector:
+    app: showbuzz-chat-service
+  ports:
+  - protocol: TCP
+    port: 3006
+    targetPort: 3006

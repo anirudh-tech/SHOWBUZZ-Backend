@@ -6,16 +6,17 @@ import { getAllPaymentsOfTheatre } from "./getAllPaymentsOfTheatre";
 import { getAllTicketsInTheatres } from "./getAllTicketsInTheatres";
 import { listTicketsController } from "./listTickets";
 import { savePaymentController } from "./savePayment";
-
+import { ticketDetailsController } from "./ticketDetails";
 
 export const controllers = (dependencies: IDependencies) => {
   return {
-      createCheckoutSession: createCheckoutSessionController(dependencies),
-      savePayment: savePaymentController(dependencies),
-      listTickets: listTicketsController(dependencies),
-      allTickets: allTickets(dependencies),
-      getAllTicketsInTheatres: getAllTicketsInTheatres(dependencies),
-      getAllPayments: getAllPaymentsController(dependencies),
-      getAllPaymentsOfTheatre: getAllPaymentsOfTheatre(dependencies)
-  }
-}
+    createCheckoutSession: createCheckoutSessionController(dependencies),
+    savePayment: savePaymentController(dependencies),
+    listTickets: listTicketsController(dependencies),
+    allTickets: allTickets(dependencies),
+    getAllTicketsInTheatres: getAllTicketsInTheatres(dependencies),
+    getAllPayments: getAllPaymentsController(dependencies),
+    getAllPaymentsOfTheatre: getAllPaymentsOfTheatre(dependencies),
+    ticketDetails: ticketDetailsController(dependencies),
+  };
+};

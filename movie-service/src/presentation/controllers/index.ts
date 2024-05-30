@@ -7,8 +7,10 @@ import { findMovieController } from "./findMovie";
 import { getAllMoviesController } from "./getAllMovies";
 import { getAllOttMoviesController } from "./getAllOttMovies";
 import { getMovieDataController } from "./getMovieData";
+import { getPlaybackIdController } from "./getPlaybackId";
 import { getTheatreMoviesController } from "./getTheatreMovies";
 import { listOttMoviesController } from "./listOttMovies";
+import { uploadVideoController } from "./uploadVideo";
 
 export const controllers = (dependencies: IDependencies) => {
   return {
@@ -21,6 +23,8 @@ export const controllers = (dependencies: IDependencies) => {
     addOttMovie: addOttMovieController(dependencies),
     getAllOttMovies: getAllOttMoviesController(dependencies),
     getMovieData: getMovieDataController(dependencies),
-    listOttMovies: listOttMoviesController(dependencies)
+    listOttMovies: listOttMoviesController(dependencies),
+    uploadVideo: uploadVideoController(dependencies),
+    getPlaybackId: getPlaybackIdController(dependencies)
   };
 };

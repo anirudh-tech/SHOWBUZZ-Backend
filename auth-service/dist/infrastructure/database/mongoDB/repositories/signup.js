@@ -13,6 +13,9 @@ exports.signup = void 0;
 const loginCredentials_1 = require("../models/loginCredentials");
 const signup = (data) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        if (data.role == "theatre") {
+            data.status = "pending";
+        }
         const newUser = yield loginCredentials_1.User.create(data);
         console.log(newUser, 'new user,repo,signup');
         if (!newUser) {

@@ -23,6 +23,8 @@ export const savePaymentController = (dependencies: IDependencies) => {
         }
         paymentDoneProducer(theatreData)
       }
-    } catch (error) {}
+    } catch (error) {
+      next(error)
+    }
   };
 };

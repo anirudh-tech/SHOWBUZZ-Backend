@@ -6,8 +6,8 @@ export const getAllPaymentsOfTheatre = (dependencies: IDependencies) => {
   return async (req: Request, res: Response, next: NextFunction) => {
     try {
       const { id } = req.params;
-      const payments = await Payment.find({ theatreId: id });
-      const totalAmount = payments.reduce((acc, payment: any) => 
+      const payments = await Payment.find({ theatreId: id })
+      const totalAmount = payments.reduce((acc: number, payment: any) => 
          acc + payment.total
       , 0);
       console.log(

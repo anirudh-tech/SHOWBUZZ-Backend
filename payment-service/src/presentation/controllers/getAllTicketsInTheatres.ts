@@ -12,7 +12,7 @@ export const getAllTicketsInTheatres = (dependencies: IDependencies) => {
       console.log("🚀 ~ file: allTickets.ts:10 ~ return ~ page:", page)
       const limit = Number(req.query?.limit) || 5;
       const skip = (page - 1) * limit;
-      const tickets: any = await Payment.find({theatreId: id}).skip(skip).limit(limit).populate('theatreId').populate('movieId').populate('userId')
+      const tickets: any = await Payment.find({theatreId: id}).skip(skip).limit(limit).populate('theatreId').populate('movieId').populate('userId').sort({date:-1})
       const totalDocuments = await Payment.countDocuments();
       const totalPage = Math.ceil(totalDocuments/limit)
 
@@ -31,6 +31,7 @@ export const getAllTicketsInTheatres = (dependencies: IDependencies) => {
       
         // Create a new object with desired fields and formatted date
         return {
+          id: ticket._id,
           username: ticket.userId?.username,
           totalAmountPaid: ticket.total,
           showDate: formattedShowDate,

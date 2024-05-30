@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: showbuzz-movie-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: showbuzz-movie-service
+  template:
+    metadata:
+      labels:
+        app: showbuzz-movie-service
+    spec:
+      containers:
+      - name: showbuzz-movie-service
+        image: anirudhjagath/showbuzz-movie-service:latest
+        envFrom:
+        - configMapRef:
+            name: movie-config 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: showbuzz-movie-service
+spec:
+  selector:
+    app: showbuzz-movie-service
+  ports:
+  - protocol: TCP
+    port: 3003
+    targetPort: 3003

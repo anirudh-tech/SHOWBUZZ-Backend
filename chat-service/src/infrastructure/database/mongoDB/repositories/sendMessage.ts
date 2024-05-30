@@ -10,9 +10,10 @@ export const sendMessage = async ({ content, chatId, userId }: any) => {
     };
 
     const message = await Message.create(newMessage);
-    await Chat.findByIdAndUpdate(chatId, {
+    const latestMessage = await Chat.findByIdAndUpdate(chatId, {
       latestMessage: message,
     });
+    console.log("🚀 ~ file: sendMessage.ts:16 ~ sendMessage ~ latestMessage:", latestMessage)
 
     const chats = await Message.find({chatId}).populate("chatId")
 
