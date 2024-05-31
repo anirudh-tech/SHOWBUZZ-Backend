@@ -5,6 +5,7 @@ on:
         branches: [ 'main' ]
         paths:
             - "user-service/**"
+    workflow_dispatch:
 
 jobs:
     push_to_registry:

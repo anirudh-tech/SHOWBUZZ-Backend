@@ -5,6 +5,7 @@ on:
         branches: [ 'main' ]
         paths:
             - "movie-service/**"
+    workflow_dispatch:
 
 jobs:
     push_to_registry:
