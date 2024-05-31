@@ -2,7 +2,13 @@ import { Kafka, Producer, Consumer } from "kafkajs";
 
 export const kafka = new Kafka({
     clientId: "movie-service",
-    brokers:["localhost:29092"]
+    brokers:["pkc-6ojv2.us-west4.gcp.confluent.cloud:9092"],
+    ssl: true,
+    sasl: {
+        username: "V43PWJPNNM2LS4DZ",
+        password: "38zo91dmXSAfoqMxVV6+lQPajWxQKfknOstERYl8eNqsc5IWsYWzn7Kk/dgbtH+o",
+        mechanism: 'plain'
+    },
 })
 
 export const producer: Producer = kafka.producer();

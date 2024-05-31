@@ -40,7 +40,7 @@ app.use((
   })
 
   server.listen(PORT, () => {
-    console.log(`connected to user service at ${PORT}`) 
+    console.log(`connected to chat service at ${PORT}`) 
 }) 
 
 export default app; 
