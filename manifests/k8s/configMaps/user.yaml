@@ -5,8 +5,8 @@ metadata:
   labels:
     app: showbuzz-user-service
 data:
-  PORT = 3004
-  MONGO_URL = mongodb://127.0.0.1:27017/Showbuzz_user_service
-  EMAIL = tickerpage@gmail.com
-  PASSWORD =  vfte pvyn gvat uylk
-  ACCESS_TOKEN_SECRET = frstgbsrtdvdcaerfvthtybsadvdfbvdfbdbf
+  PORT: "3004"
+  MONGO_URL: "mongodb+srv://anirudhjagath2002:773D7AN3YuThj5A4@cluster0.thmadpi.mongodb.net/showbuzz-user?retryWrites=true&w=majority&appName=Cluster0"
+  EMAIL: "tickerpage@gmail.com"
+  PASSWORD: "vfte pvyn gvat uylk"
+  ACCESS_TOKEN_SECRET: "frstgbsrtdvdcaerfvthtybsadvdfbvdfbdbf"

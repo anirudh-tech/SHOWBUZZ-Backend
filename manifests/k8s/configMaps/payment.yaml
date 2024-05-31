@@ -5,9 +5,9 @@ metadata:
   labels:
     app: showbuzz-payment-service
 data:
-  PORT = 3005
-  MONGO_URL = mongodb://127.0.0.1:27017/Showbuzz_payment_service
-  EMAIL = tickerpage@gmail.com
-  PASSWORD =  vfte pvyn gvat uylk
-  ACCESS_TOKEN_SECRET = frstgbsrtdvdcaerfvthtybsadvdfbvdfbdbf
-  STRIPE_SECRET = sk_test_51P4LmJSIDbcFgJDoamkYLAVKIK1wT8qoBMHXEY5tvA1QLHB1fhmzlgniI6k5vpRfKuLBUAZz3mIWiB4qMBsoGEjW002FSYFxnd
+  PORT: "3005"
+  MONGO_URL: "mongodb+srv://anirudhjagath2002:773D7AN3YuThj5A4@cluster0.thmadpi.mongodb.net/showbuzz-payment?retryWrites=true&w=majority&appName=Cluster0"
+  EMAIL: "tickerpage@gmail.com"
+  PASSWORD: "vfte pvyn gvat uylk"
+  ACCESS_TOKEN_SECRET: "frstgbsrtdvdcaerfvthtybsadvdfbvdfbdbf"
+  STRIPE_SECRET: "sk_test_51P4LmJSIDbcFgJDoamkYLAVKIK1wT8qoBMHXEY5tvA1QLHB1fhmzlgniI6k5vpRfKuLBUAZz3mIWiB4qMBsoGEjW002FSYFxnd"

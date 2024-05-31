@@ -5,9 +5,9 @@ metadata:
   labels:
     app: showbuzz-chat-service
 data:
-  PORT = 3006
-  MONGO_URL = mongodb://127.0.0.1:27017/Showbuzz_chat_service
-  EMAIL = tickerpage@gmail.com
-  PASSWORD =  vfte pvyn gvat uylk
-  ACCESS_TOKEN_SECRET = frstgbsrtdvdcaerfvthtybsadvdfbvdfbdbf
-  FRONT_END_URL = "http://localhost:5173"
+  PORT: "3006"
+  MONGO_URL: "mongodb+srv://anirudhjagath2002:773D7AN3YuThj5A4@cluster0.thmadpi.mongodb.net/showbuzz-chat?retryWrites=true&w=majority&appName=Cluster0"
+  EMAIL: "tickerpage@gmail.com"
+  PASSWORD:  "vfte pvyn gvat uylk"
+  ACCESS_TOKEN_SECRET: "frstgbsrtdvdcaerfvthtybsadvdfbvdfbdbf"
+  FRONT_END_URL: "http://localhost:5173"
