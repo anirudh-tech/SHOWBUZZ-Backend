@@ -1,5 +1,5 @@
 import { IPaymentEntity } from "../entities/paymentEntity";
 
 export interface ITicketDetailsUseCase{
-  execute(id: string): Promise<IPaymentEntity>
+  execute(id: string): Promise<any>
 }
