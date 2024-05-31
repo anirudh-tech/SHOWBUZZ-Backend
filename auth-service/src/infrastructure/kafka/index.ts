@@ -2,7 +2,7 @@ import { Kafka, Producer, Consumer } from "kafkajs";
 
 export const kafka = new Kafka({
     clientId: "auth-service",
-    brokers:["https://psrc-81pvj7.us-west4.gcp.confluent.cloud"],
+    brokers:["pkc-6ojv2.us-west4.gcp.confluent.cloud:9092"],
     ssl: true,
     sasl: {
         username: "V43PWJPNNM2LS4DZ",
