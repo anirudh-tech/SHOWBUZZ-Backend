@@ -1,0 +1,63 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-controller
+  annotations:
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/enable-cors: "true" 
+    nginx.ingress.kubernetes.io/cors-allow-origin: "http://tickertick.shop"
+spec:
+  ingressClassName: nginx
+  rules:
+  - http:
+      paths:
+      - path: /chat
+        pathType: Prefix
+        backend:
+          service:
+            name: showbuzz-chat-service
+            port:
+              number: 3006
+      - path: /socket.io  
+        pathType: Prefix
+        backend:
+          service:
+            name: showbuzz-chat-service
+            port:
+              number: 3006
+      - path: /auth
+        pathType: Prefix
+        backend:
+          service:
+            name: showbuzz-auth-service
+            port:
+              number: 3001
+      - path: /movie
+        pathType: Prefix
+        backend:
+          service:
+            name: showbuzz-movie-service
+            port:
+              number: 3003
+      - path: /payment
+        pathType: Prefix
+        backend:
+          service:
+            name: showbuzz-payment-service
+            port:
+              number: 3005
+      - path: /theatre
+        pathType: Prefix
+        backend:
+          service:
+            name: showbuzz-theatre-service
+            port:
+              number: 3002
+      - path: /user
+        pathType: Prefix
+        backend:
+          service:
+            name: showbuzz-user-service
+            port:
+              number: 3004

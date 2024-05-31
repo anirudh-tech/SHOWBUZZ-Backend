@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: chat-config
+  labels:
+    app: showbuzz-chat-service
+data:
+  PORT = 3006
+  MONGO_URL = mongodb://127.0.0.1:27017/Showbuzz_chat_service
+  EMAIL = tickerpage@gmail.com
+  PASSWORD =  vfte pvyn gvat uylk
+  ACCESS_TOKEN_SECRET = frstgbsrtdvdcaerfvthtybsadvdfbvdfbdbf
+  FRONT_END_URL = "http://localhost:5173"

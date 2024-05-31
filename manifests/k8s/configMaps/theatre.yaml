@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: theatre-config
+  labels:
+    app: showbuzz-theatre-service
+data:
+  PORT = 3002
+  MONGO_URL = mongodb://127.0.0.1:27017/Showbuzz_theatre_service
+  EMAIL = tickerpage@gmail.com
+  PASSWORD =  vfte pvyn gvat uylk
+  ACCESS_TOKEN_SECRET = frstgbsrtdvdcaerfvthtybsadvdfbvdfbdbf

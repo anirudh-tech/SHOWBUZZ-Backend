@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: movie-config
+  labels:
+    app: showbuzz-movie-service
+data:
+  PORT = 3003
+  MONGO_URL = mongodb://127.0.0.1:27017/Showbuzz_movie_service
+  EMAIL = tickerpage@gmail.com
+  PASSWORD =  vfte pvyn gvat uylk
+  ACCESS_TOKEN_SECRET = frstgbsrtdvdcaerfvthtybsadvdfbvdfbdbf
