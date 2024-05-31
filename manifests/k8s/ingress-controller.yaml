@@ -4,9 +4,8 @@ metadata:
   name: ingress-controller
   annotations:
     nginx.ingress.kubernetes.io/use-regex: "true"
-    cert-manager.io/cluster-issuer: letsencrypt-prod
     nginx.ingress.kubernetes.io/enable-cors: "true" 
-    nginx.ingress.kubernetes.io/cors-allow-origin: "http://tickertick.shop"
+    nginx.ingress.kubernetes.io/cors-allow-origin: "showbuzzz.vercel.app"
 spec:
   ingressClassName: nginx
   rules:
@@ -19,7 +18,7 @@ spec:
             name: showbuzz-chat-service
             port:
               number: 3006
-      - path: /socket.io  
+      - path: /socket.io
         pathType: Prefix
         backend:
           service:
