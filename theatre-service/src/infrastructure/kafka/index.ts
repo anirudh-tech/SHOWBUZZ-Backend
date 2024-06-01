@@ -2,13 +2,14 @@ import { Kafka, Producer, Consumer } from "kafkajs";
 
 export const kafka = new Kafka({
     clientId: "theatre-service",
-    brokers:["pkc-6ojv2.us-west4.gcp.confluent.cloud:9092"],
+    brokers:["pkc-12576z.us-west2.gcp.confluent.cloud:9092"],
     ssl: true,
     sasl: {
-        username: "V43PWJPNNM2LS4DZ",
-        password: "38zo91dmXSAfoqMxVV6+lQPajWxQKfknOstERYl8eNqsc5IWsYWzn7Kk/dgbtH+o",
+        username: "EM4QHYEWIUV5YTZC",
+        password: "6NweShZ2ummIJvFj0w79maopIn/uOYNENbHmZX0/+MNfYC7xPi3UlhCa384HcP0/",
         mechanism: 'plain'
     },
+    authenticationTimeout: 5000
 })
 
 export const producer: Producer = kafka.producer();
