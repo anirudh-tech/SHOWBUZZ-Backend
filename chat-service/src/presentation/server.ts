@@ -15,11 +15,6 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}))
 app.use(cookieParser());
 
-app.use((req, res, next) => {
-  console.log('hellooo')
-  next();
-})
-
 const server = http.createServer(app);
 
 connectSocketIo(server);

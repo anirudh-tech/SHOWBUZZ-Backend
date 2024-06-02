@@ -12,12 +12,8 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}))
 app.use(cookieParser());
 
-app.use((req, res, next) => {
-  console.log('hellooo')
-  next();
-})
 
-app.use("/", userRoutes(dependencies));
+app.use("/user", userRoutes(dependencies));
 
 app.use((
     err: Error,

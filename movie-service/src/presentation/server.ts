@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
 
-app.use("/", adminRoutes(dependencies));
+app.use("/movie", adminRoutes(dependencies));
 
 app.use((
     err: Error,

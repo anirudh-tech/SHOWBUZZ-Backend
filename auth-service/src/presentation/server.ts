@@ -12,11 +12,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-app.use("/inauth", (req, res, next) => {
-  console.log("hellooo");
-  return res.send("got it");
-});
-
 app.use("/auth", authRoutes(dependencies));
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {

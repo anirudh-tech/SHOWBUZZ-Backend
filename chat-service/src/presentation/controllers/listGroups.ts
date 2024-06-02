@@ -8,21 +8,18 @@ export const listGroupsController = (dependencies: IDependencies) => {
   const {useCases: {listGroupsUseCase}} = dependencies
   return async(req: Request, res: Response, next: NextFunction) => {
     try {
-      // const encodedToken = req.cookies.user_jwt
-      // const token: any = verifyToken(encodedToken)
-      // console.log("🚀 ~ file: createGroup.ts:13 ~ return ~ token:", token)
-      // const id = token._id
+      const encodedToken = req.cookies.user_jwt
+      const token: any = verifyToken(encodedToken)
+      console.log("🚀 ~ file: createGroup.ts:13 ~ return ~ token:", token)
+      const id = token._id
 
-      // const data = await listGroupsUseCase(dependencies).execute(id)
-      // console.log("🚀 ~ file: listGroups.ts:17 ~ returnasync ~ response:", data)
-      // res.status(200).json({
-      //   success: true,
-      //   data,
-      //   message: "groups fetched!",
-      // })
-
-      res.send("reached")
-      
+      const data = await listGroupsUseCase(dependencies).execute(id)
+      console.log("🚀 ~ file: listGroups.ts:17 ~ returnasync ~ response:", data)
+      res.status(200).json({
+        success: true,
+        data,
+        message: "groups fetched!",
+      })
     } catch (error) {
       next(error)
     }
