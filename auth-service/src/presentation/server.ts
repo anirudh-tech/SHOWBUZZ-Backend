@@ -17,7 +17,7 @@ app.use("/inauth", (req, res, next) => {
   return res.send("got it");
 });
 
-app.use("/", authRoutes(dependencies));
+app.use("/auth", authRoutes(dependencies));
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   console.error(err);

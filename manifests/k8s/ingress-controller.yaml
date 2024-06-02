@@ -25,7 +25,7 @@ spec:
               name: showbuzz-chat-service
               port:
                 number: 3006
-        - path: /auth/?(.*)
+        - path: /auth/
           pathType: Prefix
           backend:
             service:
