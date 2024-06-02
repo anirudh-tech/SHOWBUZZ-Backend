@@ -17,7 +17,7 @@ spec:
         image: anirudhjagath/showbuzz-chat-service:latest
         envFrom:
         - configMapRef:
-            name: auth-config 
+            name: chat-config 
 ---
 apiVersion: v1
 kind: Service
@@ -30,3 +30,5 @@ spec:
   - protocol: TCP
     port: 3006
     targetPort: 3006
+  type: NodePort
+  

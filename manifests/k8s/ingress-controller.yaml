@@ -1,61 +1,62 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress-controller
+  name: showbuzz-ingress
   annotations:
+    kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
 spec:
   ingressClassName: alb
   rules:
-  - http:
+   - http:
       paths:
-      - path: /chat
-        pathType: Prefix
-        backend:
-          service:
-            name: showbuzz-chat-service
-            port:
-              number: 3006
-      - path: /socket.io
-        pathType: Prefix
-        backend:
-          service:
-            name: showbuzz-chat-service
-            port:
-              number: 3006
-      - path: /auth
-        pathType: Prefix
-        backend:
-          service:
-            name: showbuzz-auth-service
-            port:
-              number: 3001
-      - path: /movie
-        pathType: Prefix
-        backend:
-          service:
-            name: showbuzz-movie-service
-            port:
-              number: 3003
-      - path: /payment
-        pathType: Prefix
-        backend:
-          service:
-            name: showbuzz-payment-service
-            port:
-              number: 3005
-      - path: /theatre
-        pathType: Prefix
-        backend:
-          service:
-            name: showbuzz-theatre-service
-            port:
-              number: 3002
-      - path: /user
-        pathType: Prefix
-        backend:
-          service:
-            name: showbuzz-user-service
-            port:
-              number: 3004
+        - path: /chat
+          pathType: Prefix
+          backend:
+            service:
+              name: showbuzz-chat-service
+              port:
+                number: 3006
+        - path: /socket.io
+          pathType: Prefix
+          backend:
+            service:
+              name: showbuzz-chat-service
+              port:
+                number: 3006
+        - path: /auth
+          pathType: Prefix
+          backend:
+            service:
+              name: showbuzz-auth-service
+              port:
+                number: 3001
+        - path: /movie
+          pathType: Prefix
+          backend:
+            service:
+              name: showbuzz-movie-service
+              port:
+                number: 3003
+        - path: /payment
+          pathType: Prefix
+          backend:
+            service:
+              name: showbuzz-payment-service
+              port:
+                number: 3005
+        - path: /theatre
+          pathType: Prefix
+          backend:
+            service:
+              name: showbuzz-theatre-service
+              port:
+                number: 3002
+        - path: /user
+          pathType: Prefix
+          backend:
+            service:
+              name: showbuzz-user-service
+              port:
+                number: 3004
