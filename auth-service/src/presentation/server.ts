@@ -8,6 +8,8 @@ dotenv.config();
 const app: Application = express();
 const PORT: number = Number(process.env.PORT) || 3001;
 
+app.set("trust proxy", true);
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
