@@ -34,9 +34,13 @@ app.use((
     };
     return res.status(500).json(errorResponse);
   })
+  app.use('*', (req, res) => {
+    res.send(req.url);
+  });
 
   app.listen(PORT, () => {
     console.log(`connected to movie service at ${PORT}`) 
 }) 
+
 
 export default app; 
