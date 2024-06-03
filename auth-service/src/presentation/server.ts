@@ -12,7 +12,7 @@ const PORT: number = Number(process.env.PORT) || 3001;
 app.set("trust proxy", true);
 
 const corsOptions = {
-  origin:'https://showbuzz.tickertick.shop',
+  origin:'https://showbuzzz.vercel.app',
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
 }
