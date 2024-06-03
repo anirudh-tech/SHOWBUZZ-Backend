@@ -6,6 +6,7 @@ import { chatRoutes } from "../infrastructure/routes/chatRoutes";
 import { dependencies } from "../config/dependencies";
 import connectSocketIo from "../infrastructure/socket/connection";
 import { messageRoutes } from "../infrastructure/routes/messageRoutes";
+import cors from 'cors'
 
 dotenv.config();
 const app: Application = express();
@@ -16,6 +17,13 @@ app.use(express.urlencoded({extended:true}))
 app.use(cookieParser());
 
 const server = http.createServer(app);
+
+const corsOptions = {
+  origin:'https://showbuzzz.vercel.app',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+}
+app.use(cors(corsOptions));
 
 connectSocketIo(server);
 app.use("/chat", chatRoutes(dependencies));

@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import { theatreRoutes  } from "../infrastructure/routes/theatreRoutes";
 import { dependencies } from "../config/dependencies";
+import cors from "cors"
 
 dotenv.config();
 const app: Application = express();
@@ -11,6 +12,13 @@ const PORT: number = Number(process.env.PORT) || 3002
 app.use(express.json());
 app.use(express.urlencoded({extended:true}))
 app.use(cookieParser());
+
+const corsOptions = {
+  origin:'https://showbuzzz.vercel.app',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+}
+app.use(cors(corsOptions));
 
 app.use("/theatre", theatreRoutes(dependencies));
 
