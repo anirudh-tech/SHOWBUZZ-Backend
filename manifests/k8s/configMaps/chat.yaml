@@ -10,4 +10,4 @@ data:
   EMAIL: "tickerpage@gmail.com"
   PASSWORD:  "vfte pvyn gvat uylk"
   ACCESS_TOKEN_SECRET: "frstgbsrtdvdcaerfvthtybsadvdfbvdfbdbf"
-  FRONT_END_URL: "http://localhost:5173"
+  FRONT_END_URL: "https://showbuzz.tickertick.shop"

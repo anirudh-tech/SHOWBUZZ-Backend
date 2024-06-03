@@ -29,6 +29,9 @@ connectSocketIo(server);
 app.use("/chat", chatRoutes(dependencies));
 app.use("/message", messageRoutes(dependencies));
 
+app.use("/socket.io",chatRoutes(dependencies))
+app.use("/socket.io",messageRoutes(dependencies))
+
 app.use((
     err: Error,
     req: Request,
