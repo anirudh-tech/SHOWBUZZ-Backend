@@ -94,11 +94,14 @@ export const signupController = (dependencies: IDependencies) => {
               const accessToken = jwt.sign(
                 payload,
                 String(process.env.ACCESS_TOKEN_SECRET),
-                { expiresIn: "1h" }
+                { expiresIn: "1h" },
+                
               );
 
               res.cookie("user_jwt", accessToken, {
                 httpOnly: true,
+                secure:true,
+                sameSite: "none"
               });
               console.log(result,'================');
               
