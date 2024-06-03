@@ -1,4 +1,4 @@
-import express,{Application, NextFunction, Request, Response} from "express"
+import express, { Application, NextFunction, Request, Response } from "express";
 import dotenv from "dotenv";
 import http from "http";
 import cookieParser from "cookie-parser";
@@ -6,47 +6,44 @@ import { chatRoutes } from "../infrastructure/routes/chatRoutes";
 import { dependencies } from "../config/dependencies";
 import connectSocketIo from "../infrastructure/socket/connection";
 import { messageRoutes } from "../infrastructure/routes/messageRoutes";
-import cors from 'cors'
+import cors from "cors";
 
 dotenv.config();
 const app: Application = express();
-const PORT: number = Number(process.env.PORT) || 3006
+const PORT: number = Number(process.env.PORT) || 3006;
 
 app.use(express.json());
-app.use(express.urlencoded({extended:true}))
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 const server = http.createServer(app);
 
 const corsOptions = {
-  origin:'https://showbuzzz.vercel.app',
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  origin: "https://showbuzzz.vercel.app",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true,
-}
+};
 app.use(cors(corsOptions));
 
-connectSocketIo(server);
 app.use("/chat", chatRoutes(dependencies));
 app.use("/message", messageRoutes(dependencies));
 
-app.use("/socket.io",chatRoutes(dependencies))
-app.use("/socket.io",messageRoutes(dependencies))
+app.use("/connect", (req, res) => {
+  connectSocketIo(server);
+});
 
-app.use((
-    err: Error,
-    req: Request,
-    res: Response,
-    next: NextFunction
-  ) => {
-    console.error(err);
-      const errorResponse = {
-      errors: [{ message: err?.message || 'Something went wrong' }],
-    };
-    return res.status(500).json(errorResponse);
-  })
+connectSocketIo(server);
 
-  server.listen(PORT, () => {
-    console.log(`connected to chat service at ${PORT}`) 
-}) 
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+  console.error(err);
+  const errorResponse = {
+    errors: [{ message: err?.message || "Something went wrong" }],
+  };
+  return res.status(500).json(errorResponse);
+});
 
-export default app; 
+server.listen(PORT, () => {
+  console.log(`connected to chat service at ${PORT}`);
+});
+
+export default app;
