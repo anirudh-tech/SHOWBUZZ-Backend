@@ -3,12 +3,20 @@ import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import { authRoutes } from "../infrastructure/routes/authRoutes";
 import { dependencies } from "../config/dependencies";
+import cors from 'cors'
 
 dotenv.config();
 const app: Application = express();
 const PORT: number = Number(process.env.PORT) || 3001;
 
 app.set("trust proxy", true);
+
+const corsOptions = {
+  origin:'https://showbuzz.tickertick.shop',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+}
+app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
