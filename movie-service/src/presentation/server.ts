@@ -22,8 +22,9 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-app.use(()=>{
+app.use((req, res, next)=>{
   console.log("Reached inside Movie Service");
+  next()
 })
 
 app.use("/movie", adminRoutes(dependencies));
