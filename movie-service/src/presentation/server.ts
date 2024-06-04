@@ -23,7 +23,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 app.use((req, res, next)=>{
-  console.log("Reached inside Movie Service");
+  console.log("Reached inside Movie Service",req.url);
   next()
 })
 
