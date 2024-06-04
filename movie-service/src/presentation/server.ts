@@ -18,7 +18,13 @@ const corsOptions = {
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
 }
+
+
 app.use(cors(corsOptions));
+
+app.use(()=>{
+  console.log("Reached inside Movie Service");
+})
 
 app.use("/movie", adminRoutes(dependencies));
 
