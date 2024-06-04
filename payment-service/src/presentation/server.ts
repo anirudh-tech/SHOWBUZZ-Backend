@@ -9,9 +9,7 @@ dotenv.config();
 const app: Application = express();
 const PORT: number = Number(process.env.PORT) || 3005
 
-app.use(express.json());
-app.use(express.urlencoded({extended:true}));
-app.use(cookieParser());
+app.set("trust proxy", true);
 
 const corsOptions = {
   origin:'https://showbuzzz.vercel.app',
@@ -20,6 +18,9 @@ const corsOptions = {
 }
 app.use(cors(corsOptions));
 
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
+app.use(cookieParser());
 
 app.use("/payment", paymentRoutes(dependencies));
 
