@@ -30,7 +30,7 @@ export const createCheckoutSessionController = (
         payment_method_types: ["card"],
         line_items: lineItems,
         mode: "payment",
-        success_url: "http://localhost:5173/paymentSuccess",
+        success_url: "https://showbuzzz.vercel.app/paymentSuccess",
         cancel_url: "http://futstore.me",
       });
       // handlePaymentSuccessWebhook(session.id);
