@@ -4,9 +4,10 @@ import { Server } from "http";
 const socket = require("socket.io");
 
 const connectSocketIo = (server: Server) => {
+  console.log("inside socket server")
   const io: Socket = socket(server, {
     cors: {
-      origin: ["*"],
+      origin: "*",
       credentials: true,
     },
   });
