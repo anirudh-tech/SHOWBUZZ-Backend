@@ -27,14 +27,17 @@ export const listGroups = async (id: string) => {
     let allConversations = await Chat.find({participants:{$in:[id]}})
     console.log("🚀 ~ file: listGroups.ts:28 ~ listGroups ~ allConversations:", allConversations)
 
-    let data = conversations.filter(convo => !allConversations.includes(convo._id.toString()));
+    let data = allConversations.filter(convo => !conversations.includes(convo._id.toString()));
+    console.log("🚀 ~ file: listGroups.ts:31 ~ listGroups ~ data:", data)
+
+    const result = [conversations].concat(data)
 
 
 
-    console.log("🚀 ~ file: listGroups.ts:6 ~ listGroups ~ conversations:", data)
+    console.log("🚀 ~ file: listGroups.ts:6 ~ listGroups ~ conversations:", result)
 
 
-    return data;
+    return result;
     
   } catch (error: any) {
     throw new Error(error.message)
