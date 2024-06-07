@@ -32,7 +32,7 @@ export const listGroups = async (id: string) => {
     let data = allConversations.filter(convo => !conversationIds.includes(convo._id.toString()));
     console.log("🚀 ~ file: listGroups.ts:31 ~ listGroups ~ data:", data)
 
-    const result = [conversations].concat(data)
+    const result = [...conversations].concat(data)
 
 
 
