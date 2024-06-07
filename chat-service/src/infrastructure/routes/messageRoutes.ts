@@ -9,9 +9,5 @@ export const messageRoutes = (dependencies: IDependencies) => {
 
   router.route('/listMessages/:chatId').get( allMessage );
 
-
-
-
-
   return router;
 };

@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: showbuzz-client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: showbuzz-client
+  template:
+    metadata:
+      labels:
+        app: showbuzz-client
+    spec:
+      containers:
+      - name: showbuzz-client
+        image: anirudhjagath/showbuzz-client:latest
+        ports:
+        - containerPort: 5173
+        envFrom:
+            - configMapRef:
+                name: client-config
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: showbuzz-client
+spec:
+  selector:
+    app: showbuzz-client
+  ports:
+  - protocol: TCP
+    port: 5173
+    targetPort: 5173
+      
