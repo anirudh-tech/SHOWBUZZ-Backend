@@ -5,7 +5,6 @@ import cookieParser from "cookie-parser";
 import { chatRoutes } from "../infrastructure/routes/chatRoutes";
 import { dependencies } from "../config/dependencies";
 import connectSocketIo from "../infrastructure/socket/connection";
-import { messageRoutes } from "../infrastructure/routes/messageRoutes";
 import cors from "cors";
 
 dotenv.config();
@@ -27,7 +26,6 @@ app.use(cors(corsOptions));
 
 connectSocketIo(server);
 app.use("/chat", chatRoutes(dependencies));
-app.use("/message", messageRoutes(dependencies));
 
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
