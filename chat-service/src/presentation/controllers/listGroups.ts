@@ -12,6 +12,7 @@ export const listGroupsController = (dependencies: IDependencies) => {
       const token: any = verifyToken(encodedToken)
       console.log("🚀 ~ file: createGroup.ts:13 ~ return ~ token:", token)
       const id = token._id
+      console.log("🚀 ~ file: listGroups.ts:15 ~ returnasync ~ id:", id)
 
       const data = await listGroupsUseCase(dependencies).execute(id)
       console.log("🚀 ~ file: listGroups.ts:17 ~ returnasync ~ response:", data)
