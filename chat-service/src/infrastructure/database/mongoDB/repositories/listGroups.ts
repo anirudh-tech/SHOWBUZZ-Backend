@@ -4,8 +4,7 @@ import { Chat } from "../models/chatModel"
 export const listGroups = async (id: string) => {
   console.log("🚀 ~ file: listGroups.ts:5 ~ listGroups ~ id:", id)
   try {
-    let conversations;
-    conversations = await Chat.aggregate([
+    let conversations = await Chat.aggregate([
       // Match the documents with the given participant id
       { $match: { participants: new mongoose.Types.ObjectId(id) } },
       // Lookup to join the latestMessage details
@@ -24,15 +23,17 @@ export const listGroups = async (id: string) => {
       
     ]);
 
-    if(conversations.length == 0 ){
-      conversations = await Chat.find({participants:{$in:[id]}})
-    }
+    
+    let allConversations = await Chat.find({participants:{$in:[id]}})
+
+    let data = conversations.filter(convo => !allConversations.includes(convo._id.toString()));
 
 
-    console.log("🚀 ~ file: listGroups.ts:6 ~ listGroups ~ conversations:", conversations)
+
+    console.log("🚀 ~ file: listGroups.ts:6 ~ listGroups ~ conversations:", data)
 
 
-    return conversations;
+    return data;
     
   } catch (error: any) {
     throw new Error(error.message)
