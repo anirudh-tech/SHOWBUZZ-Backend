@@ -6,13 +6,16 @@ metadata:
     kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/cors-allow-methods: GET,POST,PUT,DELETE,OPTIONS
+    alb.ingress.kubernetes.io/cors-allow-headers: '*'
+    alb.ingress.kubernetes.io/cors-allow-origin: 'https://showbuzzz.vercel.app'
 spec:
   ingressClassName: alb
   rules:
    - http:
       paths:
         - path: /*
-          pathType: ImplementationSpecific
+          pathType: Prefix
           backend:
             service:
               name: showbuzz-client
