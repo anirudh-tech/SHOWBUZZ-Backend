@@ -15,12 +15,9 @@ spec:
       containers:
       - name: showbuzz-client
         image: anirudhjagath/showbuzz-client:latest
-        ports:
-        - containerPort: 5173
         envFrom:
-            - configMapRef:
-                name: client-config
-
+        - configMapRef:
+            name: client-config 
 ---
 apiVersion: v1
 kind: Service
