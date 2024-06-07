@@ -6,7 +6,7 @@ const socket = require("socket.io");
 const connectSocketIo = (server: Server) => {
   const io: Socket = socket(server, {
     cors: {
-      origin: [process.env.FRONT_END_URL],
+      origin: ["*"],
       credentials: true,
     },
   });

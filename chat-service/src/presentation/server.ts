@@ -19,7 +19,7 @@ app.use(cookieParser());
 const server = http.createServer(app);
 
 const corsOptions = {
-  origin: "https://showbuzzz.vercel.app",
+  origin: "*",
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true,
 };

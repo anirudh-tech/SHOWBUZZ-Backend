@@ -28,13 +28,6 @@ spec:
               name: showbuzz-chat-service
               port:
                 number: 3006
-        - path: /connect
-          pathType: Exact
-          backend:
-            service:
-              name: showbuzz-chat-service
-              port:
-                number: 3006
         - path: /socket.io
           pathType: Prefix
           backend:
