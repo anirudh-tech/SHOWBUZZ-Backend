@@ -8,6 +8,7 @@ export const createGroupController = (dependencies: IDependencies) => {
   return async (req: Request, res: Response, next: NextFunction) => {
     try {
       const {groupName} = req.body
+      console.log("🚀 ~ file: createGroup.ts:11 ~ return ~ groupName:", groupName)
       const encodedToken = req.cookies.user_jwt
       const token: any = verifyToken(encodedToken)
       console.log("🚀 ~ file: createGroup.ts:13 ~ return ~ token:", token)
