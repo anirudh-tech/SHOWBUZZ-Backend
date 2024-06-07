@@ -2,8 +2,10 @@ import mongoose from "mongoose";
 import { Chat } from "../models/chatModel"
 
 export const listGroups = async (id: string) => {
+  console.log("🚀 ~ file: listGroups.ts:5 ~ listGroups ~ id:", id)
   try {
-    const conversations = await Chat.aggregate([
+    let conversations;
+    conversations = await Chat.aggregate([
       // Match the documents with the given participant id
       { $match: { participants: new mongoose.Types.ObjectId(id) } },
       // Lookup to join the latestMessage details
@@ -21,6 +23,10 @@ export const listGroups = async (id: string) => {
       { $sort: { 'latestMessageDetails.sentAt': -1 } },
       
     ]);
+
+    if(conversations.length == 0 ){
+      conversations = await Chat.find({participants:{$in:[id]}})
+    }
 
 
     console.log("🚀 ~ file: listGroups.ts:6 ~ listGroups ~ conversations:", conversations)
