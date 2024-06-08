@@ -1,7 +1,7 @@
 import { Kafka, Producer, Consumer } from "kafkajs";
 
 export const kafka = new Kafka({
-    clientId: "user-service",
+    clientId: "chat-service",
     brokers:["34.93.145.38:29092"],
 })
 

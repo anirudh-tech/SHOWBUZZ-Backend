@@ -8,10 +8,10 @@ export const handleApprovalController = (dependencies: IDependencies) => {
     try {
       const {id, status} = req.body
       if(status === "approved") {
-        const response = await Theatre.findByIdAndUpdate(id,{status: "active"})
+        const response = await Theatre.findByIdAndUpdate(id,{status: "active"}, {new: true})
         theatreEditedProducer(response)
       } else {
-        const response = await Theatre.findByIdAndUpdate(id,{status: "blocked"})
+        const response = await Theatre.findByIdAndUpdate(id,{status: "blocked"}, {new: true})
         theatreEditedProducer(response)
       }
       const data = await Theatre.find()
