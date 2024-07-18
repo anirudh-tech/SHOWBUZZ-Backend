@@ -25,7 +25,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 connectSocketIo(server);
-app.use("/chat", chatRoutes(dependencies));
+app.use("/", chatRoutes(dependencies));
 
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {

@@ -22,7 +22,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
 
-app.use("/payment", paymentRoutes(dependencies));
+app.use("/", paymentRoutes(dependencies));
 
 app.use((
     err: Error,

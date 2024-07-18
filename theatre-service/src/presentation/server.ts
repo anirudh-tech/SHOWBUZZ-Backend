@@ -20,7 +20,7 @@ const corsOptions = {
 }
 app.use(cors(corsOptions));
 
-app.use("/theatre", theatreRoutes(dependencies));
+app.use("/", theatreRoutes(dependencies));
 
 app.use((
     err: Error,

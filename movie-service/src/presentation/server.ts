@@ -27,7 +27,7 @@ app.use((req, res, next)=>{
   next()
 })
 
-app.use("/movie", adminRoutes(dependencies));
+app.use("/", adminRoutes(dependencies));
 
 app.use((
     err: Error,

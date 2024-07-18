@@ -19,7 +19,7 @@ const corsOptions = {
 }
 app.use(cors(corsOptions));
 
-app.use("/user", userRoutes(dependencies));
+app.use("/", userRoutes(dependencies));
 
 app.use((
     err: Error,
